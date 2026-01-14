@@ -9,7 +9,7 @@ const { frontmatter } = useData()
   <div v-if="frontmatter.comments !== false" class="comments-container">
     <Giscus
       id="comments"
-      repo="[YOUR_REPO_NAME]"
+      repo="Sunja-An/Sunja-An.github.io"
       repoId="[YOUR_REPO_ID]"
       category="[YOUR_CATEGORY_NAME]"
       categoryId="[YOUR_CATEGORY_ID]"
