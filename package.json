@@ -1,0 +1,28 @@
+{
+  "name": "sunja-an-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sunja-An/Sunja-An.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Sunja-An/Sunja-An.github.io/issues"
+  },
+  "homepage": "https://github.com/Sunja-An/Sunja-An.github.io#readme",
+  "devDependencies": {
+    "@giscus/vue": "^3.1.1",
+    "vitepress": "^1.6.4",
+    "vue": "^3.5.26"
+  }
+}
