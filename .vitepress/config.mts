@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  base: '/Sunja-An.github.io/',
   title: "Sunja-An Blog",
   description: "Welcome to my blog",
   themeConfig: {
