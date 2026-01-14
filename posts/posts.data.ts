@@ -5,8 +5,10 @@ export default createContentLoader('posts/**/*.md', {
   render: true,
   excerpt: true,
   transform(rawData) {
-    return rawData.sort((a, b) => {
-      return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date)
-    })
+    return rawData
+      .filter((page) => page.frontmatter.date)
+      .sort((a, b) => {
+        return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date)
+      })
   }
 })

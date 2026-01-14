@@ -13,11 +13,13 @@ title: Posts
 
 <style>
 .posts-container {
-  padding: 8px;
+  padding: 2rem;
 }
 h2 {
+  font-weight: 800;
+  font-size: 2rem;
   border-bottom: 2px solid var(--vp-c-brand);
-  padding-bottom: 0.5rem;
+  padding-bottom: 1rem;
   margin-bottom: 1.5rem;
 }
 </style>

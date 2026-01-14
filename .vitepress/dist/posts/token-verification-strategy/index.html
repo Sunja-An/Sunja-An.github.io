@@ -6,14 +6,15 @@
     <title>Token検証に対する工夫 | Sunja-An Blog</title>
     <meta name="description" content="Token検証に対する工夫 Java SpringBoot">
     <meta name="generator" content="VitePress v1.6.4">
-    <link rel="preload stylesheet" href="/assets/style.V_Z5fP9w.css" as="style">
+    <link rel="preload stylesheet" href="/assets/style.BAU7H__I.css" as="style">
     <link rel="preload stylesheet" href="/vp-icons.css" as="style">
     
     <script type="module" src="/assets/app.DYfJbm8W.js"></script>
     <link rel="preload" href="/assets/inter-roman-latin.Di8DUHzh.woff2" as="font" type="font/woff2" crossorigin="">
     <link rel="modulepreload" href="/assets/chunks/theme.DQIwGnpM.js">
     <link rel="modulepreload" href="/assets/chunks/framework.CBg6nt2o.js">
-    <link rel="modulepreload" href="/assets/posts_token-verification-strategy_index.md.CmWbxR2u.lean.js">
+    <link rel="modulepreload" href="/assets/posts_token-verification-strategy_index.md.BJxRfOhO.lean.js">
+    <link rel="icon" href="/logo.png">
     <script id="check-dark-mode">(()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();</script>
     <script id="check-mac-os">document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));</script>
   </head>
@@ -99,7 +100,7 @@
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">        }</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">    }</span></span>
 <span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">}</span></span></code></pre></div><p>このコードによって、チームメイトの人からMethodが役目による分離がしやすくなったという評価を貰うことができました。 そして役目が追加されてもUserRoleに追加して、検証ロジックをこのAspect Methodに入れることで、維持補修がしやすいと思っております。</p><h2 id="感想" tabindex="-1">感想 <a class="header-anchor" href="#感想" aria-label="Permalink to &quot;感想&quot;">​</a></h2><p>最近自分が今担当しているプロジェクトで認証を担当している人がJwt Tokenを無意識で使っていることに気づきました。 PRを貰った時、Jwt Tokenを使って理由に対してちゃんと説明ができない部分を見て、Jwt Tokenの概念や、利点について教えながら自分の考えが間違ったかもしれないかもしれないのでポーストに書いて意見を共有したかったのです。 間違っているとことか、論理的に変なとこがあったらぜひ教えて下さい。</p></div></div></main><footer class="VPDocFooter" data-v-e6f2a212 data-v-1bcd8184><!--[--><!--]--><!----><!----></footer><!--[--><!--[--><!--[--><div class="comments-container" data-v-15c119cd><!----></div><!--]--><!--]--><!--]--></div></div></div><!--[--><!--]--></div></div><footer class="VPFooter has-sidebar" data-v-d8b57b2d data-v-566314d4><div class="container" data-v-566314d4><p class="message" data-v-566314d4>Released under the MIT License.</p><p class="copyright" data-v-566314d4>Copyright © 2025 Sunja An</p></div></footer><!--[--><!--]--></div></div>
-    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about.md\":\"C_v3-Mz1\",\"index.md\":\"BaxvR78z\",\"posts_golang-migrate-history_index.md\":\"C6hGe0U_\",\"posts_index.md\":\"CEuXFPDy\",\"posts_token-verification-strategy_index.md\":\"CmWbxR2u\",\"readme.md\":\"BR10Yx7i\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Sunja-An Blog\",\"description\":\"Welcome to my blog\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Home\",\"link\":\"/\"},{\"text\":\"Posts\",\"link\":\"/posts/\"},{\"text\":\"About\",\"link\":\"/about\"}],\"sidebar\":[{\"text\":\"Posts\",\"items\":[]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/Sunja-An\"}],\"footer\":{\"message\":\"Released under the MIT License.\",\"copyright\":\"Copyright © 2025 Sunja An\"}},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
+    <script>window.__VP_HASH_MAP__=JSON.parse("{\"about.md\":\"BodCxLlW\",\"index.md\":\"koud17TB\",\"posts_golang-migrate-history_index.md\":\"C6hGe0U_\",\"posts_index.md\":\"BCOGx-Na\",\"posts_java-binding_index.md\":\"C95OxaL-\",\"posts_java-concurrency_index.md\":\"DCU3Jwsr\",\"posts_java-no-setter_index.md\":\"CpxOeelU\",\"posts_static-memory_index.md\":\"Dfs4bRb9\",\"posts_token-verification-strategy_index.md\":\"BJxRfOhO\",\"readme.md\":\"BR10Yx7i\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Sunja-An Blog\",\"description\":\"Welcome to my blog\",\"base\":\"/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"nav\":[{\"text\":\"Home\",\"link\":\"/\"},{\"text\":\"Posts\",\"link\":\"/posts/\"},{\"text\":\"About\",\"link\":\"/about\"}],\"sidebar\":[{\"text\":\"Posts\",\"items\":[]}],\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/Sunja-An\"}],\"footer\":{\"message\":\"Released under the MIT License.\",\"copyright\":\"Copyright © 2025 Sunja An\"}},\"locales\":{},\"scrollOffset\":134,\"cleanUrls\":false}");</script>
     
   </body>
 </html>

@@ -1,8 +1,47 @@
 import { defineConfig } from 'vitepress'
+import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
+
+function getSidebarItems() {
+  const postsDir = path.resolve(__dirname, '../posts')
+  const files = fs.readdirSync(postsDir)
+  const items: { text: string; link: string; date: Date }[] = []
+
+  files.forEach((file) => {
+    if (file.endsWith('.md') && file !== 'index.md') {
+      const filePath = path.join(postsDir, file)
+      const content = fs.readFileSync(filePath, 'utf-8')
+      const match = content.match(/title:\s*(.*)/)
+      const dateMatch = content.match(/date:\s*(.*)/)
+      
+      if (match && dateMatch) {
+        items.push({
+          text: match[1].trim(),
+          link: `/posts/${file.replace('.md', '')}/`,
+          date: new Date(dateMatch[1].trim())
+        })
+      }
+    }
+  })
+
+  // Sort by date descending
+  items.sort((a, b) => b.date - a.date)
+
+  // Take top 5
+  return items.slice(0, 5).map(item => ({
+    text: item.text,
+    link: item.link
+  }))
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: 'https://sunja-an.github.io/',
+  base: '/',
+  head: [['link', { rel: 'icon', href: '/logo.png' }]],
   title: "Sunja-An Blog",
   description: "Welcome to my blog",
   themeConfig: {
@@ -16,11 +55,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Posts',
-        items: [
-           // This will be populated or handled differently if we want auto-generation,
-           // for now let's just link to the main pages or key posts.
-           // We might want to use a custom theme layout for blog posts later.
-        ]
+        items: getSidebarItems()
       }
     ],
 
