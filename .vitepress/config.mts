@@ -61,7 +61,7 @@ function getSidebarItems() {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/',
+  base: '/sunja-an.github.io/',
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   title: "Sunja-An Blog",
   description: "Welcome to my blog",
