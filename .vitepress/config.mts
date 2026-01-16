@@ -8,20 +8,41 @@ const __dirname = path.dirname(__filename)
 
 function getSidebarItems() {
   const postsDir = path.resolve(__dirname, '../posts')
-  const files = fs.readdirSync(postsDir)
   const items: { text: string; link: string; date: Date }[] = []
 
-  files.forEach((file) => {
-    if (file.endsWith('.md') && file !== 'index.md') {
-      const filePath = path.join(postsDir, file)
+  // Ensure posts directory exists
+  if (!fs.existsSync(postsDir)) {
+    return []
+  }
+
+  const entries = fs.readdirSync(postsDir, { withFileTypes: true })
+
+  entries.forEach((entry) => {
+    if (entry.name === 'index.md' || entry.name === 'posts.data.ts' || entry.name === '.DS_Store') return
+
+    let filePath = ''
+    let link = ''
+
+    if (entry.isDirectory()) {
+      const indexPath = path.join(postsDir, entry.name, 'index.md')
+      if (fs.existsSync(indexPath)) {
+        filePath = indexPath
+        link = `/posts/${entry.name}/`
+      }
+    } else if (entry.name.endsWith('.md')) {
+      filePath = path.join(postsDir, entry.name)
+      link = `/posts/${entry.name.replace('.md', '')}/`
+    }
+
+    if (filePath) {
       const content = fs.readFileSync(filePath, 'utf-8')
-      const match = content.match(/title:\s*(.*)/)
+      const titleMatch = content.match(/title:\s*["']?(.*?)["']?$/m)
       const dateMatch = content.match(/date:\s*(.*)/)
-      
-      if (match && dateMatch) {
+
+      if (titleMatch && dateMatch) {
         items.push({
-          text: match[1].trim(),
-          link: `/posts/${file.replace('.md', '')}/`,
+          text: titleMatch[1].trim(),
+          link: link,
           date: new Date(dateMatch[1].trim())
         })
       }
@@ -29,7 +50,7 @@ function getSidebarItems() {
   })
 
   // Sort by date descending
-  items.sort((a, b) => b.date - a.date)
+  items.sort((a, b) => b.date.getTime() - a.date.getTime())
 
   // Take top 5
   return items.slice(0, 5).map(item => ({
