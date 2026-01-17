@@ -18,10 +18,14 @@ hero:
 
 ---
 
-<HomeCategories />
+<div class="home-content">
+  <h2>Recent Posts</h2>
+  <PostList :posts="posts" />
+</div>
 
 <script setup>
-import HomeCategories from './.vitepress/components/HomeCategories.vue'
+import PostList from './.vitepress/components/PostList.vue'
+import { data as posts } from './posts/posts.data.ts'
 </script>
 
 <style>
@@ -30,5 +34,20 @@ import HomeCategories from './.vitepress/components/HomeCategories.vue'
 }
 .VPHero .image-src {
   border-radius: 8px;
+}
+
+.home-content {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.home-content h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 3rem;
 }
 </style>
