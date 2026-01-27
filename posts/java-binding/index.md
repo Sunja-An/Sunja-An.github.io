@@ -3,7 +3,7 @@ title: "Binding"
 description: 정적 바인딩(Static Binding)과 동적 바인딩(Dynamic Binding)의 차이와 개념
 date: 2025-12-01 14:08:00+09:00
 categories:
-    - Tech
+    - CS
 tags:
     - Java
     - Korean

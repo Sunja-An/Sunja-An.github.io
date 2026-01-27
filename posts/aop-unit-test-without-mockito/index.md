@@ -3,7 +3,7 @@ title: "Mockito 없이 순수 Java 로 AOP 에 대해서 단위 테스트를 진
 description: "Mockito나 SpringBootTest 없이 순수 Java와 Proxy를 활용하여 AOP 단위 테스트를 진행한 경험과 방법 공유"
 date: 2026-01-16 09:00:00+09:00
 categories:
-    - Tech
+    - test
 tags:
     - Java
     - AOP

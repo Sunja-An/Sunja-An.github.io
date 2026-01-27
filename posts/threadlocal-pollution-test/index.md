@@ -3,7 +3,7 @@ title: "ThreadLocal 오염 문제를 직접 테스트해보았다"
 description: "ThreadLocal 사용 시 발생할 수 있는 데이터 오염 문제를 통합 테스트로 검증하고 도입을 보류한 이유"
 date: 2026-01-16 09:35:00+09:00
 categories:
-    - Tech
+    - test
 tags:
     - Java
     - ThreadLocal

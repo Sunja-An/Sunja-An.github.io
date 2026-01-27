@@ -3,7 +3,7 @@ title: "Tomato (トマト)"
 description: "BOJ 7576 トマト問題の解説及びStringTokenizerの性能分析"
 date: 2026-01-20 16:50:00+09:00
 categories:
-    - Algorithm
+    - algorithm
 tags:
     - Java
     - BFS

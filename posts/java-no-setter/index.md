@@ -3,7 +3,7 @@ title: "Setter 를 쓰지 않겠다는 다짐"
 description: JDBC와 JPA를 사용하며 Setter 사용에 대한 의문과 Reflection을 통한 대안 탐구
 date: 2025-12-09 14:00:00+09:00
 categories:
-    - Tech
+    - develop
 tags:
     - Java
     - Reflection

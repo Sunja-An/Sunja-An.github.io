@@ -6,9 +6,9 @@ import { fileURLToPath } from 'url'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-function getSidebarItems() {
+function getSidebarItems(category?: string) {
   const postsDir = path.resolve(__dirname, '../posts')
-  const items: { text: string; link: string; date: Date }[] = []
+  const items: { text: string; link: string; date: Date; categories: string[] }[] = []
 
   // Ensure posts directory exists
   if (!fs.existsSync(postsDir)) {
@@ -38,12 +38,14 @@ function getSidebarItems() {
       const content = fs.readFileSync(filePath, 'utf-8')
       const titleMatch = content.match(/title:\s*["']?(.*?)["']?$/m)
       const dateMatch = content.match(/date:\s*(.*)/)
+      const categoryMatch = content.match(/categories:\s*\n\s*-\s*(.*)/)
 
       if (titleMatch && dateMatch) {
         items.push({
           text: titleMatch[1].trim(),
           link: link,
-          date: new Date(dateMatch[1].trim())
+          date: new Date(dateMatch[1].trim()),
+          categories: categoryMatch ? [categoryMatch[1].trim()] : []
         })
       }
     }
@@ -52,8 +54,18 @@ function getSidebarItems() {
   // Sort by date descending
   items.sort((a, b) => b.date.getTime() - a.date.getTime())
 
-  // Take top 5
-  return items.slice(0, 5).map(item => ({
+  // Filter by category if provided
+  if (category) {
+    return items
+      .filter(item => item.categories.includes(category))
+      .map(item => ({
+        text: item.text,
+        link: item.link
+      }))
+  }
+
+  // Take top 5 for default/home if needed, or just return all
+  return items.map(item => ({
     text: item.text,
     link: item.link
   }))
@@ -75,8 +87,29 @@ export default defineConfig({
 
     sidebar: [
       {
-        text: 'Posts',
-        items: getSidebarItems()
+        text: 'Develop',
+        collapsed: false,
+        items: getSidebarItems('develop')
+      },
+      {
+        text: 'Algorithm',
+        collapsed: false,
+        items: getSidebarItems('algorithm')
+      },
+      {
+        text: 'CS',
+        collapsed: false,
+        items: getSidebarItems('CS')
+      },
+      {
+        text: 'DB',
+        collapsed: false,
+        items: getSidebarItems('DB')
+      },
+      {
+        text: 'Test',
+        collapsed: false,
+        items: getSidebarItems('test')
       }
     ],
 

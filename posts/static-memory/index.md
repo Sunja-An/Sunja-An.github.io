@@ -3,7 +3,7 @@ title: "Static Area & Heap Area"
 description: Java Static Area와 Heap Area의 차이와 메모리 구조에 대한 이해
 date: 2025-12-14 14:16:00+09:00
 categories:
-    - Tech
+    - CS
 tags:
     - Java
     - Korean

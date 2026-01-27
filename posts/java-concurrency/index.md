@@ -3,7 +3,7 @@ title: "Synchronized, Volatile, Atomic"
 description: Java 동기화 문제 해결책인 Synchronized, Volatile, Atomic에 대한 고찰
 date: 2025-12-27 14:10:00+09:00
 categories:
-    - Tech
+    - CS
 tags:
     - Java
     - Korean
