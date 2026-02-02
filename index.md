@@ -39,7 +39,7 @@ import { data as posts } from './posts/posts.data.ts'
 .home-content {
   max-width: 1152px;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 4rem 1.5rem 10rem;
 }
 
 .home-content h2 {
