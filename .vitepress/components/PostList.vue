@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 
 const props = defineProps({
   posts: {
@@ -10,8 +10,41 @@ const props = defineProps({
     type: Array,
     required: false,
     default: () => []
+  },
+  pageSize: {
+    type: Number,
+    default: 10
   }
 })
+
+const currentPage = ref(1)
+
+const totalPages = computed(() => Math.ceil(props.posts.length / props.pageSize))
+
+const paginatedPosts = computed(() => {
+  const start = (currentPage.value - 1) * props.pageSize
+  const end = start + props.pageSize
+  return props.posts.slice(start, end)
+})
+
+function nextPage() {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
+
+function prevPage() {
+  if (currentPage.value > 1) {
+    currentPage.value--
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+}
+
+function goToPage(page) {
+  currentPage.value = page
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
 
 function formatDate(date) {
   return new Date(date).toLocaleDateString('ko-KR', {
@@ -30,7 +63,7 @@ function getCategoryColor(categoryName) {
 <template>
   <div class="post-list">
     <article 
-      v-for="post in posts" 
+      v-for="post in paginatedPosts" 
       :key="post.url" 
       class="post-card"
     >
@@ -54,6 +87,36 @@ function getCategoryColor(categoryName) {
         </div>
       </a>
     </article>
+  </div>
+
+  <div class="pagination" v-if="totalPages > 1">
+    <button 
+      @click="prevPage" 
+      :disabled="currentPage === 1"
+      class="pagination-btn"
+    >
+      Previous
+    </button>
+    
+    <div class="page-numbers">
+      <button 
+        v-for="page in totalPages" 
+        :key="page"
+        @click="goToPage(page)"
+        class="page-number"
+        :class="{ active: currentPage === page }"
+      >
+        {{ page }}
+      </button>
+    </div>
+
+    <button 
+      @click="nextPage" 
+      :disabled="currentPage === totalPages"
+      class="pagination-btn"
+    >
+      Next
+    </button>
   </div>
 </template>
 
@@ -159,5 +222,60 @@ function getCategoryColor(categoryName) {
 
 :root.dark .post-date {
   color: var(--vp-c-text-3);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 1rem;
+}
+
+.pagination-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--vp-c-divider);
+  background-color: var(--vp-c-bg-soft);
+  color: var(--vp-c-text-1);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn:not(:disabled):hover {
+  border-color: var(--vp-c-brand);
+  color: var(--vp-c-brand);
+}
+
+.page-numbers {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.page-number {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  cursor: pointer;
+}
+
+.page-number:hover {
+  color: var(--vp-c-brand);
+}
+
+.page-number.active {
+  background-color: var(--vp-c-brand);
+  color: white;
 }
 </style>

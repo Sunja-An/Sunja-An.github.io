@@ -19,7 +19,11 @@ hero:
 ---
 
 <div class="home-content">
-  <h2>Recent Posts</h2>
+  <div class="intro-section">
+    <p>즐거운 개발을 하고 싶어.</p>
+    <p>사람들에게 긍정적인 영향을 주는 개발자가 되고 싶어.</p>
+    <p>나만의 스토리를 쓰고 싶다.</p>
+  </div>
   <PostList :posts="posts" />
 </div>
 
@@ -42,12 +46,20 @@ import { data as posts } from './posts/posts.data.ts'
   padding: 4rem 1.5rem 10rem;
 }
 
-.home-content h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
+/* .home-content h2 removed */
+
+.intro-section {
   text-align: center;
+  margin-bottom: 4rem;
+  padding-top: 2rem;
   border-top: 1px solid var(--vp-c-divider);
-  padding-top: 3rem;
+}
+
+.intro-section p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.8;
+  color: var(--vp-c-text-2);
+  margin: 0.5rem 0;
 }
 </style>

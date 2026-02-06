@@ -107,9 +107,15 @@ export default defineConfig({
         items: getSidebarItems('DB')
       },
       {
+
         text: 'Test',
         collapsed: false,
         items: getSidebarItems('test')
+      },
+      {
+        text: 'Daily',
+        collapsed: false,
+        items: getSidebarItems('daily')
       }
     ],
 
