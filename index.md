@@ -18,19 +18,17 @@ hero:
 
 ---
 
-<div class="home-content">
-  <div class="intro-section">
+<div class="home-sections">
+  <div class="section-block">
     <p>즐거운 개발을 하고 싶어.</p>
-    <p>사람들에게 긍정적인 영향을 주는 개발자가 되고 싶어.</p>
-    <p>나만의 스토리를 쓰고 싶다.</p>
   </div>
-  <PostList :posts="posts" />
+  <div class="section-block">
+    <p>사람들에게 긍정적인 영향을 주는 개발자가 되고 싶어.</p>
+  </div>
+  <div class="section-block">
+    <p>나만의 스토리를 쓰려고 해.</p>
+  </div>
 </div>
-
-<script setup>
-import PostList from './.vitepress/components/PostList.vue'
-import { data as posts } from './posts/posts.data.ts'
-</script>
 
 <style>
 :root {
@@ -40,26 +38,46 @@ import { data as posts } from './posts/posts.data.ts'
   border-radius: 8px;
 }
 
-.home-content {
+.home-sections {
   max-width: 1152px;
   margin: 0 auto;
   padding: 4rem 1.5rem 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
 }
 
-/* .home-content h2 removed */
-
-.intro-section {
+.section-block {
   text-align: center;
-  margin-bottom: 4rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--vp-c-divider);
+  padding: 4rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  position: relative;
 }
 
-.intro-section p {
-  font-size: 1.2rem;
-  font-weight: 500;
-  line-height: 1.8;
-  color: var(--vp-c-text-2);
-  margin: 0.5rem 0;
+/* Optional: Add a subtle divider or styling between sections */
+.section-block:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background-color: var(--vp-c-divider);
+}
+
+.section-block p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--vp-c-text-1);
+  margin: 0;
+  background: linear-gradient(120deg, var(--vp-c-brand), var(--vp-c-brand-dark));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 </style>
