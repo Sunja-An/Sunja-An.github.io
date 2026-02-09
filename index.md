@@ -18,18 +18,6 @@ hero:
 
 ---
 
-<div class="home-sections">
-  <div class="section-block">
-    <p>즐거운 개발을 하고 싶어.</p>
-  </div>
-  <div class="section-block">
-    <p>사람들에게 긍정적인 영향을 주는 개발자가 되고 싶어.</p>
-  </div>
-  <div class="section-block">
-    <p>나만의 스토리를 쓰려고 해.</p>
-  </div>
-</div>
-
 <RecentPosts />
 
 <style>
