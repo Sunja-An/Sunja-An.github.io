@@ -47,7 +47,7 @@ GAMERS 프로젝트를 진행하면서 유저가 회원가입을 할 때, Email,
 
 아래의 그림을 보고 설명하고자 한다.
 
-<!-- ![Discord OAuth2 가 Web Server 라고 생각해주세요 ;-;](./OAuth2_Hacker.jpg) -->
+![Discord OAuth2 가 Web Server 라고 생각해주세요 ;-;](/images/OAuth2_Hacker.jpg)
 
 Discord OAuth2 가 Web Server 라고 생각해주세요 ;-;
 
@@ -77,13 +77,13 @@ State 를 Server 에서 발급한 후, Browser 에 Cookie 혹은 Session 으로 
 
 만약 Login 을 시도했던 주체 ( A ) 이면, State 가 일치하니 로그인이 성공하게 될 것이고, Login 을 시도했던 주체가 아니면 State 가 불일치하므로 로그인이 되지 않을 것이다.
 
-<!-- ![OAuth2 과정](./OAuth2_과정.png) -->
+![OAuth2 과정](/images/OAuth2%20과정.png)
 
 이렇게 Discord OAuth2 에 대한 기능 Feature 를 완성할 수 있었다.
 
 추가적으로 Frontend 에서는 Login 후, Discord API ( 외부 API ) 에 정보를 요청하는 부분이 있기에 아래와 같이 Suspense 처리를 해주었다.
 
-<!-- ![suspense](./image.png) -->
+![suspense](/images/Suspense.png)
 
 ::: tip
 State 를 제작하는 부분은 Go언어의 crypto/rand 패키지를 사용하여 제작하였다.
@@ -97,7 +97,7 @@ State 를 제작하는 부분은 Go언어의 crypto/rand 패키지를 사용하�
 
 이때 아래와 같은 화면이 표기된다.
 
-<!-- ![login cancel](./image.png) -->
+![login cancel](/images/500ErrorInDiscordOAuth2.png)
 
 Discord OAuth2 가 실패했을 때를 대비하여 처리를 해놓지 않았기 때문이다.
 
