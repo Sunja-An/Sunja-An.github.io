@@ -30,6 +30,8 @@ hero:
   </div>
 </div>
 
+<RecentPosts />
+
 <style>
 :root {
   --vp-home-hero-image-filter: none;
