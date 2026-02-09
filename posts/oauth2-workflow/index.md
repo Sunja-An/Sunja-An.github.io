@@ -77,7 +77,7 @@ State 를 Server 에서 발급한 후, Browser 에 Cookie 혹은 Session 으로 
 
 만약 Login 을 시도했던 주체 ( A ) 이면, State 가 일치하니 로그인이 성공하게 될 것이고, Login 을 시도했던 주체가 아니면 State 가 불일치하므로 로그인이 되지 않을 것이다.
 
-![OAuth2 과정](/images/OAuth2%20과정.png)
+![OAuth2 과정](/images/OAuth2_과정.png)
 
 이렇게 Discord OAuth2 에 대한 기능 Feature 를 완성할 수 있었다.
 
