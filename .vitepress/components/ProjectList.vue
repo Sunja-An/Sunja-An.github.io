@@ -1,6 +1,13 @@
 <script setup>
 const projects = [
   {
+    title: 'COU',
+    role: 'Backend',
+    period: '2024.03 ~',
+    tech: ['Java', 'Java SpringBoot4', 'MySQL', 'Docker'],
+    link: '/projects/cou'
+  },
+  {
     title: 'GAMERS-BE',
     role: 'Backend',
     period: '2025.12 ~',
@@ -37,8 +44,8 @@ const projects = [
       v-for="project in projects" 
       :key="project.title" 
       :href="project.link"
-      target="_blank"
-      rel="noopener noreferrer"
+      :target="project.link.startsWith('http') ? '_blank' : '_self'"
+      :rel="project.link.startsWith('http') ? 'noopener noreferrer' : ''"
       class="project-card"
     >
       <div class="card-header">

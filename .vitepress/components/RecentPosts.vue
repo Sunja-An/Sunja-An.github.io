@@ -3,6 +3,14 @@ import { data as posts } from '../../posts/posts.data.ts'
 import PostList from './PostList.vue'
 
 const recentPosts = posts.slice(0, 5)
+
+const categories = [
+  { name: 'develop', color: '#3B82F6' },   // Blue
+  { name: 'algorithm', color: '#A855F7' }, // Purple
+  { name: 'CS', color: '#22C55E' },        // Green
+  { name: 'DB', color: '#F97316' },        // Orange
+  { name: 'test', color: '#EF4444' }       // Red
+]
 </script>
 
 <template>
@@ -11,7 +19,7 @@ const recentPosts = posts.slice(0, 5)
       <h2>Recent Posts</h2>
       <a href="/posts/" class="view-all">View All →</a>
     </div>
-    <PostList :posts="recentPosts" />
+    <PostList :posts="recentPosts" :categories="categories" />
   </div>
 </template>
 
