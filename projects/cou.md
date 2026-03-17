@@ -11,7 +11,7 @@ title: COU Project
 COU is a contest platform designed for university students to compete and collaborate. I contributed primarily to the backend architecture and implementation.
 
 - **Role**: Backend Developer
-- **Period**: 2024.03 ~
+- **Period**: 2026.02 ~
 - **Repository**: [https://github.com/FOR-GAMERS/COU-BE](https://github.com/FOR-GAMERS/COU-BE)
 
 ## 🛠 Tech Stack

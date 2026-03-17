@@ -3,7 +3,7 @@ const projects = [
   {
     title: 'COU',
     role: 'Backend',
-    period: '2024.03 ~',
+    period: '2026.02 ~',
     tech: ['Java', 'Java SpringBoot4', 'MySQL', 'Docker'],
     link: '/projects/cou'
   },
