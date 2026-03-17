@@ -42,7 +42,7 @@ Go言語のメモリ管理によって、フラグメンテーションに対し
 
 トータルで空いてる空間の合計ではメモリを使用しても良いが、その空間が分けられているとしたら大きいメモリ要求ができないのである、、
 
-![External_Fragmentation.png](/images/cs/External_Fragmentation.png)
+![External_Fragmentation.png](/images/fragmentation/External_Fragmentation.png)
 
 なのでOS単位ではMemory圧縮や、Paging方法を使用するのだ。
 
@@ -54,7 +54,7 @@ Go言語のメモリ管理によって、フラグメンテーションに対し
 
 なのでSlab Allocatorみたいに要求された大きさに一番近いメモリブロックを細分化して確保方式を使用する！
 
-![Internal_Fragmentation.png](/images/cs/Internal_Fragmentation.png)
+![Internal_Fragmentation.png](/images/fragmentation/Internal_Fragmentation.png)
 
 だがこの文章の中で 「Slab Allocatorみたいに」 と言うことに対して少し深掘りをしてみよう。
 
