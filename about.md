@@ -11,6 +11,9 @@ title: About Me
 
 **BackEnd Developer**
 
+> **My Belief**
+> 私の周りの人々は、私のために在るのではない。彼らが綴るそれぞれの人生に、私が束の間、立ち寄らせてもらっているに過ぎないのだ。
+
 Hello! I am Sunwoo An, a passionate Backend Developer from the Republic of Korea.
 
 ### 🛠 Tech Stack
