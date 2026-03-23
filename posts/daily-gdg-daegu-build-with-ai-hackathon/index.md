@@ -47,7 +47,7 @@ AIでビルドをし、自分たちのサービスを作ろうと言う大会で
 
 主に開発時間は２時間半で、サービスリリーズや、発表の準備までやる感じで進みました。
 
-![IMG_7007.JPG](/images/daily/gdg-daegu-build-with-ai-hackathon/IMG_7007.JPG)
+![img_7007.jpg](/images/daily/gdg-daegu-build-with-ai-hackathon/img_7007.jpg)
 
 自分はここで社会社であり、開発者として役割を担当しました。
 
@@ -95,11 +95,11 @@ AIでビルドをし、自分たちのサービスを作ろうと言う大会で
 
 これをプロムポートで記入し、この姿勢が正しいのかフィードバックを残して欲しいと言う研究を1時間を使ってしました。
 
-![스크린샷 2026-03-20 135115.png](/images/daily/gdg-daegu-build-with-ai-hackathon/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-03-20%20135115.png)
+![screenshot_135115.png](/images/daily/gdg-daegu-build-with-ai-hackathon/screenshot_135115.png)
 
-![[KR] 피지컬 갤러리 Youtube](/images/daily/gdg-daegu-build-with-ai-hackathon/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-03-20%20135156.png)
+![screenshot_135156.png](/images/daily/gdg-daegu-build-with-ai-hackathon/screenshot_135156.png)
 
-[KR] 피지컬 갤러리 Youtube
+[KR] 피지컬 갤러リ Youtube
 
 > 初期のプロムポート
 
@@ -152,7 +152,7 @@ AIでビルドをし、自分たちのサービスを作ろうと言う大会で
 
 自分たちは主に下のようなアーキテクチャで作業する感じで進みました。
 
-![Architecture.png](/images/daily/gdg-daegu-build-with-ai-hackathon/Architecture.png)
+![architecture.png](/images/daily/gdg-daegu-build-with-ai-hackathon/architecture.png)
 
 自分はサーバーのプロジェクト構築や、フロントエンドの作業に入りました。
 
@@ -168,9 +168,9 @@ AIでビルドをし、自分たちのサービスを作ろうと言う大会で
 
 ![image.png](/images/daily/gdg-daegu-build-with-ai-hackathon/image.png)
 
-![image.png](/images/daily/gdg-daegu-build-with-ai-hackathon/image 1.png)
+![image_1.png](/images/daily/gdg-daegu-build-with-ai-hackathon/image_1.png)
 
-![image.png](/images/daily/gdg-daegu-build-with-ai-hackathon/NameTags.jpg)
+![nametags.jpg](/images/daily/gdg-daegu-build-with-ai-hackathon/nametags.jpg)
 
 ## 結果 & 感想
 
@@ -178,7 +178,7 @@ AIでビルドをし、自分たちのサービスを作ろうと言う大会で
 
 結果として、自分たちは立証はできなかったんですが、貴重な時間を使ってこんな短時間で未熟ですが、結果物を出したことに対してすごく喜べる時間でした！
 
-![IMG_7015.JPG](/images/daily/gdg-daegu-build-with-ai-hackathon/IMG_7015.JPG)
+![img_7015.jpg](/images/daily/gdg-daegu-build-with-ai-hackathon/img_7015.jpg)
 
 実際に発表とともに作品に対して説明ができる環境が作られたのがすごく嬉しかったのと、チームプロジェクトをうまく進んだことに意味をおきたかったのでポストで残しておこうと思います！
 
