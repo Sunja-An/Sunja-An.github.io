@@ -58,6 +58,7 @@ const categories = [
   { name: 'algorithm', color: '#A855F7' }, // Purple
   { name: 'CS', color: '#22C55E' },        // Green
   { name: 'DB', color: '#F97316' },        // Orange
-  { name: 'test', color: '#EF4444' }       // Red
+  { name: 'test', color: '#EF4444' },      // Red
+  { name: 'Daily', color: '#64748B' }      // Slate
 ]
 </script>
