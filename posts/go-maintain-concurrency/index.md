@@ -2,6 +2,7 @@
 title: "[Go] 並行性（Concurrency）はどのように実現されているのか？"
 description: "Go言語がいかにして並行性を保ちながらスレッド間でコンテキストスイッチを行うかについての解説"
 date: 2026-03-11 15:06:28+09:00
+lang: ja
 categories:
     - develop
     - CS

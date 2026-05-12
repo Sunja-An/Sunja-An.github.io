@@ -2,6 +2,7 @@
 title: "Github ENV FILE 설정"
 description: "Github Actions에서 ENV 파일을 Secret으로 관리하여 배포 환경을 개선한 경험"
 date: 2026-02-03 17:45:32+09:00
+lang: ko
 categories:
     - develop
 tags:

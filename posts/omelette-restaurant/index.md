@@ -2,6 +2,7 @@
 title: "Omelette Restaurant"
 description: "AtCoder ABC446_C Omelette Restaurant の解説"
 date: 2026-03-02 12:25:00+09:00
+lang: ja
 categories:
     - algorithm
 tags:

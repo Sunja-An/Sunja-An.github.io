@@ -2,6 +2,7 @@
 title: "[CS] フラグメンテーションに対して"
 description: "メモリ管理のフラグメンテーションとGo言語のメモリアロケータ（TCMalloc/SLUB）についての解説"
 date: 2026-03-17 19:41:12+09:00
+lang: ja
 categories:
     - develop
     - CS

@@ -2,6 +2,7 @@
 title: Golang-migrateを利用したデータベースヒストリー保存
 description: Golang-migrateを利用したデータベースヒストリー保存 MySQL
 date: 2026-01-14 12:35:00+09:00
+lang: ja
 categories:
     - DB
 tags:

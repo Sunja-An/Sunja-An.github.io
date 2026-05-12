@@ -2,6 +2,7 @@
 title: "[Daily] GDG Daegu Build With AI ハッカソンに参加してみました！"
 description: "GDG Daegu Build With AI ハッカソン参加記。Gymbroサービスの企画から実装までの過程を紹介。"
 date: 2026-03-23 20:55:00+09:00
+lang: ja
 categories:
   - Daily
 tags:

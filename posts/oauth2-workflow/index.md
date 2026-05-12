@@ -2,6 +2,7 @@
 title: OAuth2 동작 과정
 description: OAuth2 동작 과정과 CSRF 취약점, State 파라미터의 필요성에 대한 설명
 date: 2026-02-09
+lang: ko
 categories:
   - CS
 tags:

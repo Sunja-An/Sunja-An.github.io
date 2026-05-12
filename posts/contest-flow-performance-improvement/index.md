@@ -2,6 +2,7 @@
 title: "Contest Flow 성능 개선"
 description: "Redis SCAN 방식 개선 및 MySQL Batch Insert 를 통한 성능 최적화"
 date: 2026-01-29 01:40:00+09:00
+lang: ko
 categories:
     - develop
 tags:

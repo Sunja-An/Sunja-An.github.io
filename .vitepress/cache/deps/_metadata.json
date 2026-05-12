@@ -1,31 +1,37 @@
 {
-  "hash": "7c48535a",
+  "hash": "63011913",
   "configHash": "77ba7ea4",
-  "lockfileHash": "23c91c67",
-  "browserHash": "9499042c",
+  "lockfileHash": "03da8426",
+  "browserHash": "2f9495de",
   "optimized": {
     "vue": {
       "src": "../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "75da41b2",
+      "fileHash": "c39eb07d",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../node_modules/@vue/devtools-api/dist/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "11de0bb9",
+      "fileHash": "e498f1c2",
       "needsInterop": false
     },
     "vitepress > @vueuse/core": {
       "src": "../../../node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "dfdb2a60",
+      "fileHash": "3a7a5680",
       "needsInterop": false
     },
     "@giscus/vue": {
       "src": "../../../node_modules/@giscus/vue/dist/index.js",
       "file": "@giscus_vue.js",
-      "fileHash": "59c7b5db",
+      "fileHash": "c492ff83",
+      "needsInterop": false
+    },
+    "gsap": {
+      "src": "../../../node_modules/gsap/index.js",
+      "file": "gsap.js",
+      "fileHash": "69dbbc25",
       "needsInterop": false
     }
   },

@@ -2,6 +2,7 @@
 title: "Github Organization 에서의 Vercel 배포"
 description: "Github Organization 에서 Vercel 로 배포하는 비용 절감 및 우회 방법"
 date: 2026-01-27 17:55:00+09:00
+lang: ko
 categories:
     - develop
 tags:

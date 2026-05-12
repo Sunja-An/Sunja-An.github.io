@@ -2,6 +2,7 @@
 title: "[Go] GoRoutine에 대해 고찰 (1)"
 description: "GoRoutine이 왜 세상에 나오게 되었는지, 그리고 왜 이렇게 작은지에 대한 고찰"
 date: 2026-02-02 20:49:06+09:00
+lang: ko
 categories:
     - develop
     - CS
