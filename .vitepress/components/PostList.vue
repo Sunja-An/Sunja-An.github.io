@@ -1,5 +1,5 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 
 const props = defineProps({
   posts: {
@@ -23,6 +23,11 @@ const props = defineProps({
 })
 
 const currentPage = ref(1)
+
+// 탭(langFilter)이 바뀌면 페이지를 1로 리셋
+watch(() => props.langFilter, () => {
+  currentPage.value = 1
+})
 
 const filteredPosts = computed(() => {
   if (props.langFilter === 'all') return props.posts
