@@ -6,7 +6,7 @@ title: Posts
 <div class="posts-page">
   <div class="page-header">
     <h1 class="page-title">Posts</h1>
-    <p class="page-subtitle">{{ posts.length }} articles</p>
+    <p class="page-subtitle"><span v-text="filteredCount"></span> articles</p>
   </div>
 
   <!-- Language Tabs -->
@@ -32,10 +32,7 @@ title: Posts
     </button>
   </div>
 
-  <!-- Post count for active filter -->
-  <div class="filter-info">
-    <span class="filter-count">{{ filteredCount }} posts</span>
-  </div>
+
 
   <PostList :posts="posts" :categories="categories" :lang-filter="activeLang" />
 </div>
@@ -104,17 +101,7 @@ title: Posts
   font-weight: 600;
 }
 
-.filter-info {
-  margin-bottom: 0.25rem;
-  height: 1.5rem;
-  display: flex;
-  align-items: center;
-}
 
-.filter-count {
-  font-size: 0.78rem;
-  color: var(--vp-c-text-3);
-}
 </style>
 
 <script setup>
@@ -128,7 +115,7 @@ const categories = [
   { name: 'CS', color: '#0ea5e9' },
   { name: 'DB', color: '#f59e0b' },
   { name: 'test', color: '#ef4444' },
-  { name: 'Daily', color: '#64748b' }
+  { name: 'daily', color: '#64748b' }
 ]
 
 const activeLang = ref('all')

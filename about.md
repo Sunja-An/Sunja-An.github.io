@@ -22,12 +22,17 @@ Hello! I am Sunwoo An, a passionate Backend Developer from the Republic of Korea
 - **Frameworks**: SpringBoot, React.js
 - **Database & Infrastructure**: MySQL, Redis, Docker, Docker Compose
 
-### 🚀 Projects & Career
+### 💼 Career
+
+<CareerList />
+
+### 🚀 Projects
 
 <ProjectList />
 
 <script setup>
 import ProjectList from './.vitepress/components/ProjectList.vue'
+import CareerList from './.vitepress/components/CareerList.vue'
 </script>
 
 ### 🌍 Nationality
