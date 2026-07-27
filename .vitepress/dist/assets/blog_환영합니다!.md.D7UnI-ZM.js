@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as a}from"./chunks/framework.4TBoba-N.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"blog/환영합니다!.md","filePath":"blog/환영합니다!.md"}'),o={name:"blog/환영합니다!.md"};function r(_,s,c,n,p,d){return a(),t("div")}const m=e(o,[["render",r]]);export{l as __pageData,m as default};

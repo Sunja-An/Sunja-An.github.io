@@ -6,3 +6,5 @@ sidebar: false
 ---
 
 <HomeHero />
+<RecentPosts />
+

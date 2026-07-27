@@ -1,7 +1,10 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useData } from 'vitepress'
+
+gsap.registerPlugin(ScrollTrigger)
 
 // Dark mode
 const { isDark } = useData()
@@ -10,57 +13,203 @@ function toggleDark() {
 }
 
 // Refs for animation targets
-const heroRef    = ref(null)
-const imageRef   = ref(null)
-const badgeRef   = ref(null)
-const nameRef    = ref(null)
-const descRef    = ref(null)
-const stackRef   = ref(null)
-const actionsRef = ref(null)
-const orb1Ref    = ref(null)
-const orb2Ref    = ref(null)
-const topBarRef  = ref(null)
+const heroRef        = ref(null)
+const topBarRef      = ref(null)
+const orb1Ref        = ref(null)
+const orb2Ref        = ref(null)
+const imageRef       = ref(null)
+const badgeRef       = ref(null)
+const nameRef        = ref(null)
+const descRef        = ref(null)
+const stackRef       = ref(null)
+const actionsRef     = ref(null)
+const scrollArrowRef = ref(null)
 
 const stack = ['Go', 'Java', 'TypeScript', 'Spring Boot', 'Docker', 'MySQL']
 
+let ctx
+let mouseXToOrb1, mouseYToOrb1
+let mouseXToOrb2, mouseYToOrb2
+let mouseXToImage, mouseYToImage
+
+function onMouseMove(e) {
+  if (!heroRef.value) return
+  const rect = heroRef.value.getBoundingClientRect()
+  const normX = (e.clientX - rect.left) / rect.width - 0.5
+  const normY = (e.clientY - rect.top) / rect.height - 0.5
+
+  if (mouseXToOrb1) mouseXToOrb1(normX * 45)
+  if (mouseYToOrb1) mouseYToOrb1(normY * 45)
+  if (mouseXToOrb2) mouseXToOrb2(-normX * 55)
+  if (mouseYToOrb2) mouseYToOrb2(-normY * 55)
+  if (mouseXToImage) mouseXToImage(normX * 16)
+  if (mouseYToImage) mouseYToImage(normY * 16)
+}
+
+function onMouseLeave() {
+  if (mouseXToOrb1) mouseXToOrb1(0)
+  if (mouseYToOrb1) mouseYToOrb1(0)
+  if (mouseXToOrb2) mouseXToOrb2(0)
+  if (mouseYToOrb2) mouseYToOrb2(0)
+  if (mouseXToImage) mouseXToImage(0)
+  if (mouseYToImage) mouseYToImage(0)
+}
+
 onMounted(() => {
-  const targets = [
-    topBarRef.value, imageRef.value, badgeRef.value, nameRef.value,
-    descRef.value, stackRef.value, actionsRef.value
-  ]
+  if (!heroRef.value) return
 
-  gsap.set(targets, { opacity: 0 })
-  gsap.set([imageRef.value], { scale: 0.85, y: 20 })
-  gsap.set([topBarRef.value], { y: -16 })
-  gsap.set([badgeRef.value, nameRef.value, descRef.value, stackRef.value, actionsRef.value], { y: 30 })
+  ctx = gsap.context((self) => {
+    // Quick setters for smooth mouse movement
+    mouseXToOrb1 = gsap.quickTo(orb1Ref.value, "x", { duration: 1.2, ease: "power2.out" })
+    mouseYToOrb1 = gsap.quickTo(orb1Ref.value, "y", { duration: 1.2, ease: "power2.out" })
+    mouseXToOrb2 = gsap.quickTo(orb2Ref.value, "x", { duration: 1.4, ease: "power2.out" })
+    mouseYToOrb2 = gsap.quickTo(orb2Ref.value, "y", { duration: 1.4, ease: "power2.out" })
+    mouseXToImage = gsap.quickTo(imageRef.value, "x", { duration: 0.8, ease: "power2.out" })
+    mouseYToImage = gsap.quickTo(imageRef.value, "y", { duration: 0.8, ease: "power2.out" })
 
-  // Floating orbs idle animation (starts immediately)
-  gsap.to(orb1Ref.value, {
-    y: -28, x: 14, duration: 6, ease: 'sine.inOut', repeat: -1, yoyo: true
-  })
-  gsap.to(orb2Ref.value, {
-    y: 22, x: -18, duration: 8, ease: 'sine.inOut', repeat: -1, yoyo: true, delay: 1
-  })
+    // Idle ambient scaling for background orbs
+    gsap.to(orb1Ref.value, {
+      scale: 1.1,
+      duration: 7,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true
+    })
+    gsap.to(orb2Ref.value, {
+      scale: 1.15,
+      duration: 9,
+      ease: 'sine.inOut',
+      repeat: -1,
+      yoyo: true,
+      delay: 1
+    })
 
-  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+    // Continuous rotation of profile ring using GSAP
+    gsap.to('.image-ring', {
+      rotation: 360,
+      duration: 12,
+      repeat: -1,
+      ease: 'none'
+    })
 
-  tl.to(topBarRef.value,  { opacity: 1, y: 0, duration: 0.5 })
-    .to(imageRef.value,   { opacity: 1, scale: 1, y: 0, duration: 0.9 }, '-=0.2')
-    .to(badgeRef.value,   { opacity: 1, y: 0, duration: 0.5 }, '-=0.4')
-    .to(nameRef.value,    { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
-    .to(descRef.value,    { opacity: 1, y: 0, duration: 0.55 }, '-=0.3')
-    .to(stackRef.value,   { opacity: 1, y: 0, duration: 0.5 }, '-=0.25')
-    .to(actionsRef.value, { opacity: 1, y: 0, duration: 0.55 }, '-=0.2')
+    // Set initial states using autoAlpha (combines opacity and visibility)
+    gsap.set(topBarRef.value, { autoAlpha: 0, y: -20 })
+    gsap.set(imageRef.value, { autoAlpha: 0, scale: 0.8, y: 25 })
+    gsap.set(badgeRef.value, { autoAlpha: 0, y: 20, scale: 0.9 })
+    gsap.set(nameRef.value, { autoAlpha: 0, y: 25 })
+    gsap.set(descRef.value, { autoAlpha: 0, y: 20 })
+    gsap.set('.stack-pill', { autoAlpha: 0, y: 20, scale: 0.85 })
+    gsap.set('.actions a', { autoAlpha: 0, y: 20 })
+    if (scrollArrowRef.value) {
+      gsap.set(scrollArrowRef.value, { autoAlpha: 0, y: -10 })
+    }
 
-  // Subtle floating for profile image after entrance
-  tl.to(imageRef.value, {
-    y: -8, duration: 3, ease: 'sine.inOut', repeat: -1, yoyo: true
-  }, '+=0.2')
+    // MatchMedia for accessibility & responsiveness
+    const mm = gsap.matchMedia()
+
+    mm.add("(prefers-reduced-motion: reduce)", () => {
+      // Instant reveal for users who prefer reduced motion
+      gsap.set([
+        topBarRef.value, imageRef.value, badgeRef.value, nameRef.value,
+        descRef.value, '.stack-pill', '.actions a', scrollArrowRef.value
+      ], { autoAlpha: 1, y: 0, scale: 1 })
+    })
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+      tl.to(topBarRef.value, { autoAlpha: 1, y: 0, duration: 0.6 })
+        .to(imageRef.value, { autoAlpha: 1, scale: 1, y: 0, duration: 0.9, ease: 'back.out(1.4)' }, '-=0.3')
+        .to(badgeRef.value, { autoAlpha: 1, scale: 1, y: 0, duration: 0.5, ease: 'back.out(1.5)' }, '-=0.4')
+        .to(nameRef.value, { autoAlpha: 1, y: 0, duration: 0.6 }, '-=0.3')
+        .to(descRef.value, { autoAlpha: 1, y: 0, duration: 0.55 }, '-=0.3')
+        // Stagger tech pills for ultra-smooth entrance
+        .to('.stack-pill', {
+          autoAlpha: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.45,
+          stagger: 0.05,
+          ease: 'back.out(1.5)'
+        }, '-=0.25')
+        // Stagger action buttons
+        .to('.actions a', {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: 'power3.out'
+        }, '-=0.2')
+        .to(scrollArrowRef.value, {
+          autoAlpha: 0.7,
+          y: 0,
+          duration: 0.5
+        }, '-=0.1')
+
+      // Bounce arrow continuously
+      if (scrollArrowRef.value) {
+        gsap.to(scrollArrowRef.value, {
+          y: 10,
+          duration: 1.2,
+          ease: 'sine.inOut',
+          repeat: -1,
+          yoyo: true
+        })
+      }
+
+      // Hover micro-interactions for stack pills
+      const pills = self.selector('.stack-pill')
+      pills.forEach((pill) => {
+        pill.addEventListener('mouseenter', () => {
+          gsap.to(pill, { y: -3, scale: 1.06, duration: 0.2, ease: 'power2.out', overwrite: 'auto' })
+        })
+        pill.addEventListener('mouseleave', () => {
+          gsap.to(pill, { y: 0, scale: 1, duration: 0.25, ease: 'power2.out', overwrite: 'auto' })
+        })
+      })
+
+      // Hero content scroll fade with ScrollTrigger
+      gsap.to('.hero-content-wrap', {
+        y: -30,
+        autoAlpha: 0.15,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: heroRef.value,
+          start: 'top top',
+          end: '70% top',
+          scrub: 0.5
+        }
+      })
+
+      // Scroll arrow fade out when scrolling starts
+      if (scrollArrowRef.value) {
+        gsap.to(scrollArrowRef.value, {
+          autoAlpha: 0,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: heroRef.value,
+            start: 'top top',
+            end: '15% top',
+            scrub: true
+          }
+        })
+      }
+    })
+  }, heroRef.value)
+})
+
+onUnmounted(() => {
+  ctx?.revert()
 })
 </script>
 
 <template>
-  <div class="hero-wrapper" ref="heroRef">
+  <div
+    class="hero-wrapper"
+    ref="heroRef"
+    @mousemove="onMouseMove"
+    @mouseleave="onMouseLeave"
+  >
 
     <!-- Top bar: site title + dark toggle -->
     <div class="top-bar" ref="topBarRef">
@@ -85,48 +234,57 @@ onMounted(() => {
     <div class="orb orb-1" ref="orb1Ref"></div>
     <div class="orb orb-2" ref="orb2Ref"></div>
 
-    <!-- Profile image -->
-    <div class="profile-image-wrap" ref="imageRef">
-      <img src="/profile.jpg" alt="Sunwoo An" class="profile-image" />
-      <div class="image-ring"></div>
+    <div class="hero-content-wrap">
+      <!-- Profile image -->
+      <div class="profile-image-wrap" ref="imageRef">
+        <img src="/profile.jpg" alt="Sunwoo An" class="profile-image" />
+        <div class="image-ring"></div>
+      </div>
+
+      <!-- Badge -->
+      <div class="badge" ref="badgeRef">
+        <span class="badge-dot"></span>
+        Backend Developer
+      </div>
+
+      <!-- Name -->
+      <h1 class="hero-name" ref="nameRef">Sunwoo An</h1>
+
+      <!-- Description -->
+      <p class="hero-desc" ref="descRef">
+        周りに肯定的な影響を与える開発者
+      </p>
+
+      <!-- Tech stack pills -->
+      <div class="stack-wrap" ref="stackRef">
+        <span v-for="s in stack" :key="s" class="stack-pill">{{ s }}</span>
+      </div>
+
+      <!-- Actions -->
+      <div class="actions" ref="actionsRef">
+        <a href="/posts/" class="btn-primary">
+          Posts
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="https://github.com/Sunja-An" target="_blank" rel="noopener" class="btn-ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+          GitHub
+        </a>
+        <a href="/about" class="btn-ghost">
+          About
+        </a>
+      </div>
     </div>
 
-    <!-- Badge -->
-    <div class="badge" ref="badgeRef">
-      <span class="badge-dot"></span>
-      Backend Developer
-    </div>
-
-    <!-- Name -->
-    <h1 class="hero-name" ref="nameRef">Sunwoo An</h1>
-
-    <!-- Description -->
-    <p class="hero-desc" ref="descRef">
-      周りに肯定的な影響を与える開発者
-    </p>
-
-    <!-- Tech stack pills -->
-    <div class="stack-wrap" ref="stackRef">
-      <span v-for="s in stack" :key="s" class="stack-pill">{{ s }}</span>
-    </div>
-
-    <!-- Actions -->
-    <div class="actions" ref="actionsRef">
-      <a href="/posts/" class="btn-primary">
-        Posts
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <a href="https://github.com/Sunja-An" target="_blank" rel="noopener" class="btn-ghost">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-        </svg>
-        GitHub
-      </a>
-      <a href="/about" class="btn-ghost">
-        About
-      </a>
+    <!-- Scroll arrow -->
+    <div class="scroll-arrow" ref="scrollArrowRef">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 5v14M19 12l-7 7-7-7"/>
+      </svg>
     </div>
 
   </div>
@@ -144,6 +302,15 @@ onMounted(() => {
   padding: 5rem 1.5rem 6rem;
   overflow: hidden;
   text-align: center;
+}
+
+.hero-content-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  width: 100%;
 }
 
 /* ── Top bar ── */
@@ -177,7 +344,7 @@ onMounted(() => {
   background: var(--vp-c-bg-soft);
   color: var(--vp-c-text-2);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
   padding: 0;
 }
 
@@ -185,7 +352,6 @@ onMounted(() => {
   border-color: var(--vp-c-brand);
   color: var(--vp-c-brand);
   background: rgba(99, 102, 241, 0.08);
-  transform: scale(1.08);
 }
 
 /* ── Ambient orbs ── */
@@ -195,6 +361,7 @@ onMounted(() => {
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
+  will-change: transform;
 }
 
 .orb-1 {
@@ -228,6 +395,7 @@ onMounted(() => {
   margin-bottom: 1.75rem;
   width: 120px;
   height: 120px;
+  will-change: transform;
 }
 
 .profile-image {
@@ -251,12 +419,8 @@ onMounted(() => {
     rgba(139, 92, 246, 0.4),
     rgba(99, 102, 241, 0)
   );
-  animation: spin 6s linear infinite;
   z-index: 1;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
+  will-change: transform;
 }
 
 /* ── Badge ── */
@@ -347,7 +511,8 @@ onMounted(() => {
   font-weight: 600;
   color: var(--vp-c-text-2);
   letter-spacing: 0.02em;
-  transition: all 0.15s ease;
+  cursor: default;
+  will-change: transform;
 }
 
 .stack-pill:hover {
@@ -380,7 +545,7 @@ onMounted(() => {
   font-size: 0.9rem;
   border-radius: 10px;
   letter-spacing: -0.01em;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
   border: 1px solid transparent;
 }
 
@@ -412,13 +577,25 @@ onMounted(() => {
   border-radius: 10px;
   border: 1px solid var(--vp-c-divider);
   letter-spacing: -0.01em;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
 }
 
 .btn-ghost:hover {
   border-color: var(--vp-c-text-2);
   background: var(--vp-c-bg-soft);
   transform: translateY(-1px);
+}
+
+/* ── Scroll arrow ── */
+.scroll-arrow {
+  position: absolute;
+  bottom: 1.75rem;
+  color: var(--vp-c-text-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 2;
 }
 
 /* ── Responsive ── */

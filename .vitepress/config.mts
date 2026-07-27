@@ -77,11 +77,15 @@ export default defineConfig({
   head: [['link', { rel: 'icon', href: '/logo.png' }]],
   title: "Sunja-An Blog",
   description: "Welcome to my blog",
+  rewrites: {
+    'posts/index.md': 'post/index.md',
+    'posts/:splat*': 'post/:splat*'
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: 'Home', link: '/' },
-      { text: 'Posts', link: '/posts/' },
+      { text: 'Posts', link: '/post/' },
       { text: 'About', link: '/about' }
     ],
 

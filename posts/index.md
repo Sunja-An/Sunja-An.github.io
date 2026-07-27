@@ -6,7 +6,7 @@ title: Posts
 <div class="posts-page">
   <div class="page-header">
     <h1 class="page-title">Posts</h1>
-    <p class="page-subtitle"><span v-text="filteredCount"></span> articles</p>
+    <p class="page-subtitle"><span>{{ filteredCount }}</span> articles</p>
   </div>
 
   <!-- Language Tabs -->
@@ -32,12 +32,11 @@ title: Posts
     </button>
   </div>
 
-
-
+  <!-- Single PostList component rendering all relevant posts -->
   <PostList :posts="posts" :categories="categories" :lang-filter="activeLang" />
 </div>
 
-<style>
+<style scoped>
 .posts-page {
   max-width: 720px;
   margin: 0 auto;
@@ -68,7 +67,7 @@ title: Posts
 .lang-tabs {
   display: flex;
   gap: 0.375rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
   border-bottom: 1px solid var(--vp-c-divider);
   padding-bottom: 0;
 }
@@ -100,12 +99,10 @@ title: Posts
   border-bottom-color: var(--vp-c-brand);
   font-weight: 600;
 }
-
-
 </style>
 
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { data as posts } from './posts.data.ts'
 import PostList from '../.vitepress/components/PostList.vue'
 
@@ -124,7 +121,18 @@ function setLang(lang) {
   activeLang.value = lang
 }
 
+onMounted(() => {
+  if (typeof window !== 'undefined') {
+    const params = new URLSearchParams(window.location.search)
+    const langParam = params.get('lang')
+    if (langParam && ['all', 'ko', 'ja'].includes(langParam)) {
+      activeLang.value = langParam
+    }
+  }
+})
+
 const filteredCount = computed(() => {
+  if (!posts || !Array.isArray(posts)) return 0
   if (activeLang.value === 'all') return posts.length
   return posts.filter(p => (p.frontmatter?.lang ?? 'ko') === activeLang.value).length
 })

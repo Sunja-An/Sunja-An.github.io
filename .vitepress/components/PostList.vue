@@ -30,19 +30,24 @@ watch(() => props.langFilter, () => {
 })
 
 const filteredPosts = computed(() => {
-  if (props.langFilter === 'all') return props.posts
-  return props.posts.filter(p => {
+  const list = props.posts || []
+  if (props.langFilter === 'all') return list
+  return list.filter(p => {
     const lang = p.frontmatter?.lang ?? 'ko'
     return lang === props.langFilter
   })
 })
 
-const totalPages = computed(() => Math.ceil(filteredPosts.value.length / props.pageSize))
+const totalPages = computed(() => {
+  if (!filteredPosts.value || filteredPosts.value.length === 0) return 1
+  return Math.ceil(filteredPosts.value.length / props.pageSize)
+})
 
 const paginatedPosts = computed(() => {
+  const list = filteredPosts.value || []
   const start = (currentPage.value - 1) * props.pageSize
   const end = start + props.pageSize
-  return filteredPosts.value.slice(start, end)
+  return list.slice(start, end)
 })
 
 function nextPage() {
