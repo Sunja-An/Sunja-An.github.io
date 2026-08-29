@@ -5,12 +5,12 @@ const categories = [
   {
     title: 'Tech',
     desc: 'Web development, coding, and technology.',
-    link: '/posts/' // For now linking to posts list, ideally filter by category
+    link: '/post/' // For now linking to posts list, ideally filter by category
   },
   {
     title: 'Life',
     desc: 'Personal thoughts and experiences.',
-    link: '/posts/'
+    link: '/post/'
   }
 ]
 </script>

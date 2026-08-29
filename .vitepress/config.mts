@@ -27,11 +27,11 @@ function getSidebarItems(category?: string) {
       const indexPath = path.join(postsDir, entry.name, 'index.md')
       if (fs.existsSync(indexPath)) {
         filePath = indexPath
-        link = `/posts/${entry.name}/`
+        link = `/post/${entry.name}/`
       }
     } else if (entry.name.endsWith('.md')) {
       filePath = path.join(postsDir, entry.name)
-      link = `/posts/${entry.name.replace('.md', '')}/`
+      link = `/post/${entry.name.replace('.md', '')}/`
     }
 
     if (filePath) {
@@ -132,5 +132,5 @@ export default defineConfig({
       copyright: 'Copyright © 2025 Sunja An'
     }
   },
-  srcExclude: ['hugo_backup/**']
+  srcExclude: ['hugo_backup/**', 'blog/**']
 })

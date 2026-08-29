@@ -7,6 +7,10 @@ export default createContentLoader('posts/**/*.md', {
   transform(rawData) {
     return rawData
       .filter((page) => page.frontmatter.date)
+      .map((page) => ({
+        ...page,
+        url: page.url.replace(/^\/posts\//, '/post/')
+      }))
       .sort((a, b) => {
         return +new Date(b.frontmatter.date) - +new Date(a.frontmatter.date)
       })

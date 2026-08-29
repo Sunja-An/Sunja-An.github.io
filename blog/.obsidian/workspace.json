@@ -4,37 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "da9a5e192b66a4dc",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "229e0e18f2eae3d6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "환영합니다!.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "환영합니다!"
-            }
-          }
-        ]
-      },
-      {
         "id": "2b8f1ce2a6d57196",
         "type": "tabs",
         "children": [
           {
-            "id": "5a069869b96be135",
+            "id": "c8fbdcff44ce4261",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "그래프 뷰"
+              "type": "markdown",
+              "state": {
+                "file": "Advertisement/광고 도메인 공부.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "광고 도메인 공부"
             }
           }
         ]
@@ -199,8 +183,12 @@
       "bases:새 베이스 생성하기": false
     }
   },
-  "active": "229e0e18f2eae3d6",
+  "active": "c8fbdcff44ce4261",
   "lastOpenFiles": [
-    "환영합니다!.md"
+    "Development/Golang.md",
+    "Advertisement",
+    "Development",
+    "Advertisement/광고 도메인 공부.md",
+    "Development/LLM 이 어떻게 동작하는가?.md"
   ]
 }
