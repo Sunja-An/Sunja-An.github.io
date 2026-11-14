@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode }}" data-type="service" data-radius="soft" data-buttons="solid" data-motion>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{ if .IsHome }}{{ site.Title }}：アンソヌの開発ブログと日常の記録{{ else }}{{ .Title }}｜{{ site.Title }}{{ end }}</title>
+<meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ with .Summary }}{{ . | plainify | truncate 120 }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}：アンソヌの開発ブログと日常の記録{{ else }}{{ .Title }}{{ end }}">
+<meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
+<meta property="og:image" content="{{ "share.jpg" | absURL }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="{{ .Permalink }}">
+{{ range .AlternativeOutputFormats }}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink }}" title="{{ site.Title }}">
+{{ end }}
+<meta name="site-kind" content="other">
+<meta name="page-type" content="service">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- dealt pairing zilla (Zilla Slab / Rethink Sans); the page is Japanese, so Zen Kaku Gothic New takes the text face's job (Rethink Sans has no kana) -->
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/system.css">
+<link rel="stylesheet" href="/assets/ui/cards.css">
+<link rel="stylesheet" href="/assets/motion/motion.css">
+<link rel="stylesheet" href="/assets/layout/layout.css">
+<link rel="stylesheet" href="/assets/icons/icon.css">
+<link rel="stylesheet" href="/assets/ui/base.css">
+<link rel="stylesheet" href="/assets/ui/code/fragment.css">
+<link rel="stylesheet" href="/assets/ui/terminal-run/fragment.css">
+<style>
+:root {
+  --p-bg: #ffffff; --p-surface: #f4f4f4; --p-ink: #111111; --p-muted: #6b6b6b;
+  --p-accent: #1a4be0; --p-accent-ink: #ffffff; --p-action: #1a4be0; --p-action-ink: #ffffff;
+  --p-inv-bg: #111111; --p-inv-surface: #1e1e1e; --p-inv-ink: #ffffff; --p-inv-muted: #9a9a9a;
+  --p-inv-accent: #ffffff; --p-inv-accent-ink: #111111; --p-inv-action: #ffffff; --p-inv-action-ink: #111111;
+  --font-display: "Zilla Slab", "Zen Kaku Gothic New", Georgia, serif;
+  --font-text: "Zen Kaku Gothic New", system-ui, sans-serif;
+  --display-weight: 400;
+  --display-tracking: -0.018em;
+  --display-tracking-xl: -0.024em;
+  --ly-scale: 1.02;
+}
+</style>
+<script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
+<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
+<style>
+  /* Japanese breaks between phrases, never inside a word (ブ/ログ) */
+  :is(h1, h2, .hero__lead, .mo-wh__text) { word-break: auto-phrase; }
+  /* the name set wide is 10 kana, each a full em: sized so it spans the wrap and no more */
+  .footer .close__word { font-size: min(8.6vw, 124px); line-height: 1; }
+</style>
+{{ block "head" . }}{{ end }}
+</head>
+<body>
+<!-- type: service (a person's blog; short page, no photographs)
+     deal: hero statement on the page ground (dealt split needs a photograph: none), nav nav-split (dealt nav-mega, its panel needs a picture card),
+     close close-word with the name set wide (dealt close-photo, no photograph), footer footer-dark, rhythm surface-pairs,
+     buttons solid, mark ring, palette white-link-blue, type zilla (+ Zen Kaku Gothic New for Japanese), grounds none
+     moments: word-highlight in #about, pinned-chapters in #flow (dealt 2026-11-14 on request) -->
+{{ partial "nav.html" . }}
+
+<main id="top">
+{{ block "main" . }}{{ end }}
+</main>
+
+{{ partial "footer.html" . }}</body>
+</html>

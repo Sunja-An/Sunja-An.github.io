@@ -1,0 +1,26 @@
+{{ define "head" }}{{ partial "post-css.html" . }}{{ end }}
+
+{{ define "main" }}
+  <section class="post" aria-labelledby="list-h">
+    <div class="wrap">
+      <div class="section-head">
+        {{ with .Params.who }}<p class="t-label">{{ . }}</p>{{ end }}
+        <h1 id="list-h">{{ .Title }}</h1>
+        {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{- with .Pages }}
+      <ul class="rows">
+        {{- range . }}
+        <li><a class="rows__name link" href="{{ .RelPermalink }}">{{ .Title }}</a><span class="rows__value"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></span></li>
+        {{- end }}
+      </ul>
+      {{- else }}
+      <p class="muted">まだ記事はありません。</p>
+      {{- end }}
+      {{- $other := cond (eq .Section "tech") "life" "tech" }}
+      {{- with site.GetPage (printf "/%s" $other) }}
+      <p class="post__other"><a class="link" href="{{ .RelPermalink }}">{{ .Params.cta }}</a></p>
+      {{- end }}
+    </div>
+  </section>
+{{ end }}

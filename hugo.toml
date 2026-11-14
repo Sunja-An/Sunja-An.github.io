@@ -1,0 +1,16 @@
+baseURL = "https://sunja-an.github.io/"
+languageCode = "ja"
+defaultContentLanguage = "ja"
+title = "楽しく生きて行こうや"
+# posts are split by section (content/tech, content/life), so no tag or category pages
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "開発者アンソヌが、技術の記録と毎日のことを書くブログ。"
+
+[markup.goldmark.renderer]
+  unsafe = false
+
+[markup.highlight]
+  noClasses = true
+  style = "github"

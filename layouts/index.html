@@ -1,0 +1,149 @@
+{{ define "head" }}
+<link rel="modulepreload" href="/assets/moments/moments.js"><link rel="modulepreload" href="/assets/moments/lib.js"><link rel="modulepreload" href="/assets/moments/word-highlight/moment.js"><link rel="modulepreload" href="/assets/moments/pinned-chapters/moment.js">
+<style>
+  #stack .rows { margin-top: var(--s-7); }
+  /* the two post cards: tech carries its real tool marks, life the blog's one word set large */
+  #posts .panel { --p-h: 280px; --ground-bg: var(--surface); display: grid; place-items: center; }
+  #posts .post-panel__word { margin: 0; font: var(--display-weight) clamp(56px, 7vw, 104px)/1 var(--font-display); color: var(--ink); }
+  /* pinned-chapters: each step's picture is a drawn window (a file, a terminal) that fills its frame; still, no loop */
+  #flow .mo-pc__visual { aspect-ratio: 4 / 3; max-height: 100%; }
+  #flow .mo-pc__visual > .ui { width: 100%; max-width: none; height: 100%; border-radius: 0; }
+  #flow:not(.is-live) .mo-pc__visual { aspect-ratio: auto; height: 30svh; }
+  @media (max-width: 639px) { #flow:not(.is-live) .mo-pc__visual { height: auto; aspect-ratio: 16 / 9; } }
+  #flow .ui-term__ln { white-space: pre; }
+  /* the tall tablet (820x1180): the mosaic two-up so the section fills its screen */
+  @media (min-width: 640px) and (max-width: 1023px) and (min-height: 1100px) { #stack .ic-grid--cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+</style>
+{{ end }}
+
+{{ define "main" }}
+  <section class="hero hero--statement" data-enter aria-labelledby="hero-h">
+    <div class="wrap"><div class="hero-text hero__in">
+      <div>
+        <h1 id="hero-h">アンソヌの開発ブログと日常の記録</h1>
+        <p class="hero__lead">画面もサーバーも書く開発者、アンソヌのブログです。手を動かして分かったことと、仕事の外の毎日を書いていきます。</p>
+        <div class="btn-row"><a class="btn btn--primary" href="https://github.com/Sunja-An">GitHubを見る</a><a class="btn btn--secondary" href="#posts">記事を読む</a></div>
+      </div>
+      <dl class="hero__facts">
+        <div><dt>書くこと</dt><dd>開発と日常</dd></div>
+        <div><dt>フロントエンド</dt><dd>React、TypeScript</dd></div>
+        <div><dt>バックエンド</dt><dd>Java、Go</dd></div>
+        <div><dt>言語</dt><dd>日本語と韓国語の2つ</dd></div>
+      </dl>
+    </div></div>
+  </section>
+
+  <section class="section statement ground-surface" id="about" data-moment="word-highlight" aria-label="このブログについて">
+    <div class="wrap">
+      <p class="t-label">このブログについて</p>
+      <p class="mo-wh__text">タイトルは「楽しく生きて行こうや」。動いたコードも、半日つまずいたエラーも、なんでもない休みの日も、<strong>楽しく</strong>書き残していく場所です。</p>
+    </div>
+  </section>
+
+  <section class="section" id="posts" style="--hm: 2" aria-labelledby="posts-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="posts-h">技術と日常、2つの記事</h2>
+        <p>開発者としての話と、ひとりの人としての話を分けて書いています。</p>
+      </div>
+      <div class="grid grid--top">
+        {{- range $i, $s := slice "tech" "life" }}
+        {{- with site.GetPage (printf "/%s" $s) }}
+        <a class="card span-6{{ if $i }} start-7{{ end }}" href="{{ .RelPermalink }}">
+          <p class="t-label">{{ .Params.who }}</p>
+          <h3>{{ .Title }}</h3>
+          <p>{{ .Description }}{{ with index .Pages 0 }} 最新の記事は「{{ .Title }}」。{{ end }}</p>
+          <span class="card__link">{{ .Params.cta }}<svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5"/></svg></span>
+          <div class="panel post-panel">
+            {{- if eq $s "tech" }}
+            <span class="ic-stack" aria-hidden="true">
+              <span class="ic-tile ic-tile--72"><img class="ic ic-56" src="/assets/icons/react.svg" alt="" width="40" height="36"></span>
+              <span class="ic-tile ic-tile--72"><img class="ic ic-56" src="/assets/icons/typescript.svg" alt="" width="40" height="40"></span>
+              <span class="ic-tile ic-tile--72"><img class="ic ic-56 ic-tall" src="/assets/icons/java.svg" alt="" width="30" height="40"></span>
+              <span class="ic-tile ic-tile--72 ic-tile--wide"><img class="ic ic-56 ic-wide" src="/assets/icons/go.svg" alt="" width="40" height="15"></span>
+            </span>
+            {{- else }}
+            <p class="post-panel__word" aria-hidden="true">楽しく</p>
+            {{- end }}
+          </div>
+        </a>
+        {{- end }}
+        {{- end }}
+      </div>
+    </div>
+  </section>
+
+  <!-- pinned-chapters (references/moments.md): two screens, three steps; each picture a drawn window, still -->
+  <section class="section" id="flow" style="--h: 2" data-moment="pinned-chapters" aria-labelledby="flow-h">
+    <div class="wrap mo-pc__grid">
+      <div class="mo-pc__text">
+        <h2 id="flow-h">記事が公開されるまで</h2>
+        <ol class="mo-pc__steps">
+          <li class="mo-pc__step">
+            <h3>Markdownで書く</h3>
+            <p>記事は Markdown のファイル1つ。開発の話は tech、毎日の話は life のフォルダに置きます。</p>
+            <figure class="mo-pc__visual">
+              <div class="ui ui-panel ui-code" role="img" aria-label="tech と life の Markdown ファイルを開いたエディタ">
+                <div class="ui-code__tabs"><span class="ui-code__tab is-on"><i class="ui-code__lang">MD</i>tech/hello.md</span><span class="ui-code__tab"><i class="ui-code__lang">MD</i>life/hello.md</span></div>
+                <pre class="ui-code__pre"><code><span class="ui-code__ln" data-n="1">---</span>
+<span class="ui-code__ln" data-n="2"><span class="k">title</span>: <span class="s">"楽しく生きて行こうや"</span></span>
+<span class="ui-code__ln" data-n="3"><span class="k">date</span>: <span class="n">2026-11-14</span></span>
+<span class="ui-code__ln" data-n="4"><span class="k">draft</span>: <span class="k">false</span></span>
+<span class="ui-code__ln" data-n="5">---</span></code></pre>
+              </div>
+            </figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>Hugoで確かめる</h3>
+            <p>手元で hugo server を動かして、ブラウザで見た目を確かめてから公開します。</p>
+            <figure class="mo-pc__visual">
+              <div class="ui ui-panel ui-term" role="img" aria-label="ターミナルで hugo server を実行した画面">
+                <div class="ui-term__head"><span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ui-term__title">Sunja-An.github.io</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span><span class="ui-chip ui-chip--plain ui-term__branch">main</span></div>
+                <div class="ui-term__screen"><div class="ui-term__track">
+                  <div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/Sunja-An.github.io</span><span class="ui-term__sig">$</span><span class="ui-term__typed">hugo server</span></div>
+                  <div class="ui-term__ln ui-term__log"><span class="ui-term__path">Web Server is available at http://localhost:1313/</span></div>
+                  <div class="ui-term__ln ui-term__log"><span class="ui-term__path">Press Ctrl+C to stop</span></div>
+                </div></div>
+              </div>
+            </figure>
+          </li>
+          <li class="mo-pc__step">
+            <h3>GitHub Pagesで公開</h3>
+            <p>main ブランチに push すると、GitHub Pages の sunja-an.github.io に載ります。</p>
+            <figure class="mo-pc__visual">
+              <div class="ui ui-panel ui-term" role="img" aria-label="ターミナルで git push origin main を実行した画面">
+                <div class="ui-term__head"><span class="ui-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="ui-term__title">Sunja-An.github.io</span><span class="ui-meta">zsh</span><span class="ui-spacer"></span><span class="ui-chip ui-chip--plain ui-term__branch">main</span></div>
+                <div class="ui-term__screen"><div class="ui-term__track">
+                  <div class="ui-term__ln ui-term__cmd"><span class="ui-term__cwd">~/Sunja-An.github.io</span><span class="ui-term__sig">$</span><span class="ui-term__typed">git push origin main</span></div>
+                  <div class="ui-term__ln ui-term__log"><span class="ui-term__path">To github.com/Sunja-An/Sunja-An.github.io</span></div>
+                  <div class="ui-term__ln ui-term__log"><span class="ui-term__path">   main -&gt; main</span></div>
+                </div></div>
+              </div>
+            </figure>
+          </li>
+        </ol>
+      </div>
+      <div class="mo-pc__visuals frame"></div>
+    </div>
+  </section>
+
+  <section class="section" id="stack" aria-labelledby="stack-h">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="stack-h">使う技術とブログのしくみ</h2>
+        <p>開発の記事は、ふだん手元で使っている道具の話が中心です。</p>
+      </div>
+      <div class="ic-grid ic-grid--mosaic ic-grid--cols-4">
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56" src="/assets/icons/react.svg" alt="React" width="40" height="36"></span><div><div class="ic-cell__name">React</div><div class="ic-cell__meta">フロントエンド</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56" src="/assets/icons/typescript.svg" alt="TypeScript" width="40" height="40"></span><div><div class="ic-cell__name">TypeScript</div><div class="ic-cell__meta">フロントエンド</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56 ic-tall" src="/assets/icons/java.svg" alt="Java" width="30" height="40"></span><div><div class="ic-cell__name">Java</div><div class="ic-cell__meta">バックエンド</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56 ic-tile--wide"><img class="ic ic-56 ic-wide" src="/assets/icons/go.svg" alt="Go" width="40" height="15"></span><div><div class="ic-cell__name">Go</div><div class="ic-cell__meta">バックエンド</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56" src="/assets/icons/bun.svg" alt="Bun" width="40" height="35"></span><div><div class="ic-cell__name">Bun</div><div class="ic-cell__meta">パッケージ管理</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56 ic-tile--wide"><img class="ic ic-56 ic-wide" src="/assets/icons/hugo.svg" alt="Hugo" width="40" height="10"></span><div><div class="ic-cell__name">Hugo</div><div class="ic-cell__meta">ブログのサイト生成</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56" src="/assets/icons/markdown.svg" alt="Markdown" width="40" height="40"></span><div><div class="ic-cell__name">Markdown</div><div class="ic-cell__meta">記事の形式</div></div></div>
+        <div class="ic-cell"><span class="ic-tile ic-tile--56"><img class="ic ic-56 ic-ink" src="/assets/icons/github.svg" alt="GitHub Pages" width="40" height="39"></span><div><div class="ic-cell__name">GitHub Pages</div><div class="ic-cell__meta">ブログの公開先</div></div></div>
+      </div>
+      <ul class="rows"><li><span class="rows__name">記事の言語</span><span class="rows__value">日本語、韓国語</span></li></ul>
+    </div>
+  </section>
+{{ end }}
