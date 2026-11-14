@@ -1,15 +1,26 @@
 # About ページのデータ。項目を書くと表示され、空 ([]) のブロックは表示されません。
 # 新しいものを上に書きます。
 
+# プロフィール（label: value の順に表示）
+profile:
+  - { label: "名前", value: "안선우（AN SUNWOO）" }
+  - { label: "誕生日", value: "12月24日" }
+
 # 経歴
-career: []
+career:
+  - period: "2026.09 – 現在"
+    org: "株式会社CyberAgent"
+    role: "Backend Engineer"
 #  - period: "2024.04 – 現在"
 #    org: "会社名"
 #    role: "役割（例: バックエンドエンジニア）"
 #    note: "一言（任意）"
 
 # 学歴
-education: []
+education:
+  - period: "2020.03 – 2026.08"
+    org: "慶北大学（Kyungpook National University）"
+    role: "컴퓨터학부 글로벌SW융합학과"
 #  - period: "2018.03 – 2022.02"
 #    org: "学校名"
 #    role: "専攻"

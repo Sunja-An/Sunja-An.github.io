@@ -44,6 +44,11 @@ a.row__title:hover { color: var(--action); }
 @media (max-width: 639px) { .strip__track { grid-auto-columns: 72%; } .strip__ctrl { display: none; } }
 @media (prefers-reduced-motion: reduce) { .card-life img { transition: none; } }
 
+/* about: profile facts under the intro */
+.profile { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-8); margin: var(--s-6) 0 0; }
+.profile dt { font-size: var(--t-label); color: var(--muted); }
+.profile dd { margin: var(--s-1) 0 0; font-weight: 700; }
+
 /* about: tool chips */
 .stack { list-style: none; margin: 0; padding: 0; }
 

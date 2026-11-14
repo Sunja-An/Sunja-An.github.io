@@ -2,8 +2,13 @@
   {{- $d := site.Data.about }}
   <section class="intro intro--sub wrap">
     <p class="t-label">About</p>
-    <h1>アンソヌ</h1>
+    <h1>どうも、ソヌです</h1>
     {{ with .Content }}<div class="intro__lead">{{ . }}</div>{{ end }}
+    {{- with $d.profile }}
+    <dl class="profile">
+      {{- range . }}<div><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}
+    </dl>
+    {{- end }}
   </section>
 
   {{- range slice (dict "key" "career" "title" "経歴") (dict "key" "education" "title" "学歴") }}
