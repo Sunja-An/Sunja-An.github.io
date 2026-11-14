@@ -60,6 +60,18 @@
     "markUrl": "https://www.java.com/"
   },
   {
+    "file": "kubernetes.svg",
+    "icon": "logos:kubernetes",
+    "name": "Kubernetes",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://kubernetes.io/"
+  },
+  {
     "file": "markdown.svg",
     "icon": "file:file-type-markdown",
     "name": "Markdown",
@@ -69,6 +81,18 @@
     "licence": "MIT",
     "url": "https://github.com/vscode-icons/vscode-icons",
     "trademark": false
+  },
+  {
+    "file": "mysql.svg",
+    "icon": "logos:mysql-icon",
+    "name": "MySQL",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://dev.mysql.com/"
   },
   {
     "file": "react.svg",
@@ -93,6 +117,18 @@
     "url": "https://github.com/simple-icons/simple-icons",
     "trademark": true,
     "colour": "one-colour fallback in the brand hex"
+  },
+  {
+    "file": "spring.svg",
+    "icon": "logos:spring-icon",
+    "name": "Spring",
+    "kind": "colour",
+    "source": "gilbarbara/logos@d6960edc1b7309d392c76e40d3a320df7f9ff85c",
+    "author": "Gil Barbara",
+    "licence": "CC0-1.0",
+    "url": "https://github.com/gilbarbara/logos",
+    "trademark": true,
+    "markUrl": "https://spring.io/"
   },
   {
     "file": "typescript.svg",
