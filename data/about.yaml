@@ -27,9 +27,9 @@ education:
 
 # 使う技術（icon は static/assets/icons/ のファイル名）
 stack:
-  - { name: "React", icon: "react" }
-  - { name: "TypeScript", icon: "typescript" }
-  - { name: "Java", icon: "java" }
   - { name: "Go", icon: "go", class: "ic-wide" }
-  - { name: "Bun", icon: "bun" }
-  - { name: "Hugo", icon: "hugo", class: "ic-wide" }
+  - { name: "Java", icon: "java" }
+  - { name: "Spring Boot", icon: "spring" }
+  - { name: "MySQL", icon: "mysql" }
+  - { name: "Kubernetes", icon: "kubernetes" }
+  - { name: "TypeScript", icon: "typescript" }

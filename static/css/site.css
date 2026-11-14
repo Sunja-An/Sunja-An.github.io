@@ -19,7 +19,7 @@
 
 /* rows: date left, title and one line right */
 .rows-plain { list-style: none; margin: 0; padding: 0; }
-.row { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: var(--s-5); padding-block: var(--s-4); border-bottom: 1px solid var(--line); }
+.row { display: grid; grid-template-columns: 10em minmax(0, 1fr); gap: var(--s-5); padding-block: var(--s-4); border-bottom: 1px solid var(--line); }
 .row__date { font-size: var(--t-small); color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 3px; }
 .row__title { font-size: 17px; font-weight: 500; color: var(--ink); text-decoration: none; }
 a.row__title:hover { color: var(--action); }
@@ -43,6 +43,26 @@ a.row__title:hover { color: var(--action); }
 .strip__ctrl svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 639px) { .strip__track { grid-auto-columns: 72%; } .strip__ctrl { display: none; } }
 @media (prefers-reduced-motion: reduce) { .card-life img { transition: none; } }
+
+/* home: the words left, the avatar right; a small avatar above the words on a phone */
+.intro--home { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: var(--s-9); align-items: center; }
+.intro--home .intro__text { grid-column: 1; grid-row: 1; }
+.avatar { grid-column: 2; grid-row: 1; width: 100%; height: auto; }
+@media (max-width: 767px) {
+  .intro--home { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); }
+  .avatar { grid-column: 1; grid-row: 1; width: 140px; }
+  .intro--home .intro__text { grid-row: 2; }
+}
+
+/* about: the words left, the photo right; the photo after the words on a phone */
+.intro--about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 380px); gap: var(--s-9); align-items: center; }
+.intro--about .intro__text { grid-column: 1; grid-row: 1; }
+.about-photo { grid-column: 2; grid-row: 1; margin: 0; }
+.about-photo img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--r-lg); background: var(--surface); }
+@media (max-width: 767px) {
+  .intro--about { grid-template-columns: minmax(0, 1fr); gap: var(--s-7); }
+  .about-photo { grid-column: 1; grid-row: 2; }
+}
 
 /* about: profile facts under the intro */
 .profile { display: flex; flex-wrap: wrap; gap: var(--s-4) var(--s-8); margin: var(--s-6) 0 0; }

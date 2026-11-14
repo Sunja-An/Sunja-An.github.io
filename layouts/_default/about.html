@@ -1,6 +1,11 @@
 {{ define "main" }}
   {{- $d := site.Data.about }}
-  <section class="intro intro--sub wrap">
+  <section class="intro intro--sub intro--about wrap">
+    {{- with resources.Get "images/me.jpg" }}
+    {{- $img := .Fill "900x1200 Center webp q82" }}
+    <figure class="about-photo"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="アンソヌの写真"></figure>
+    {{- end }}
+    <div class="intro__text">
     <p class="t-label">About</p>
     <h1>どうも、ソヌです</h1>
     {{ with .Content }}<div class="intro__lead">{{ . }}</div>{{ end }}
@@ -9,6 +14,7 @@
       {{- range . }}<div><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}
     </dl>
     {{- end }}
+    </div>
   </section>
 
   {{- range slice (dict "key" "career" "title" "経歴") (dict "key" "education" "title" "学歴") }}
