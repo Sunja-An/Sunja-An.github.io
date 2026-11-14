@@ -1,7 +1,7 @@
 <header class="nav">
   <div class="wrap nav__bar">
     <a class="skip-link" href="#top">本文へ移動</a>
-    <a class="nav__logo" href="/"><span class="mark" data-mark="ring" aria-hidden="true"></span>{{ site.Title }}</a>
+    <a class="nav__logo" href="/"><span class="mark" data-mark="ring" aria-hidden="true"></span>SONU&#39;s Blog</a>
     <nav class="nav__links" aria-label="メイン">
       {{- range slice (dict "url" "/tech/" "name" "技術" "sec" "tech") (dict "url" "/life/" "name" "日常" "sec" "life") (dict "url" "/about/" "name" "About" "sec" "about") }}
       <div class="nav__item"><a class="nav__link" href="{{ .url }}"{{ if eq $.Section .sec }} aria-current="page"{{ end }}>{{ .name }}</a></div>
