@@ -1,0 +1,24 @@
+# About ページのデータ。項目を書くと表示され、空 ([]) のブロックは表示されません。
+# 新しいものを上に書きます。
+
+# 経歴
+career: []
+#  - period: "2024.04 – 現在"
+#    org: "会社名"
+#    role: "役割（例: バックエンドエンジニア）"
+#    note: "一言（任意）"
+
+# 学歴
+education: []
+#  - period: "2018.03 – 2022.02"
+#    org: "学校名"
+#    role: "専攻"
+
+# 使う技術（icon は static/assets/icons/ のファイル名）
+stack:
+  - { name: "React", icon: "react" }
+  - { name: "TypeScript", icon: "typescript" }
+  - { name: "Java", icon: "java" }
+  - { name: "Go", icon: "go", class: "ic-wide" }
+  - { name: "Bun", icon: "bun" }
+  - { name: "Hugo", icon: "hugo", class: "ic-wide" }

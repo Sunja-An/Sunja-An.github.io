@@ -1,0 +1,40 @@
+{{ define "main" }}
+  {{- $d := site.Data.about }}
+  <section class="intro intro--sub wrap">
+    <p class="t-label">About</p>
+    <h1>アンソヌ</h1>
+    {{ with .Content }}<div class="intro__lead">{{ . }}</div>{{ end }}
+  </section>
+
+  {{- range slice (dict "key" "career" "title" "経歴") (dict "key" "education" "title" "学歴") }}
+  {{- $title := .title }}
+  {{- with index $d .key }}
+  <section class="block wrap">
+    <div class="block__head"><h2>{{ $title }}</h2></div>
+    <ol class="rows-plain">
+      {{- range . }}
+      <li class="row">
+        <span class="row__date">{{ .period }}</span>
+        <div class="row__main">
+          <span class="row__title">{{ .org }}</span>
+          {{ with .role }}<p class="row__desc">{{ . }}</p>{{ end }}
+          {{ with .note }}<p class="row__desc">{{ . }}</p>{{ end }}
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- end }}
+  {{- end }}
+
+  {{- with $d.stack }}
+  <section class="block wrap">
+    <div class="block__head"><h2>使う技術</h2></div>
+    <ul class="ic-chip-row stack">
+      {{- range . }}
+      <li class="ic-chip ic-chip--lg"><img class="ic{{ with .class }} {{ . }}{{ end }}" src="/assets/icons/{{ .icon }}.svg" alt="" width="22" height="22">{{ .name }}</li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+{{ end }}

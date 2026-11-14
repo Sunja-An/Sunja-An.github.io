@@ -1,0 +1,10 @@
+{{- $img := "" }}
+{{- with .Resources.GetMatch (.Params.cover | default "cover.*") }}{{ $img = (.Fill "720x900 Center webp q80").RelPermalink }}
+{{- else }}{{ with .Params.cover }}{{ $img = . }}{{ end }}{{ end }}
+<li class="card-life">
+  <a href="{{ .RelPermalink }}">
+    {{- if $img }}<img src="{{ $img }}" alt="" loading="lazy">{{ else }}<span class="card-life__blank" aria-hidden="true">{{ .Date.Format "01.02" }}</span>{{ end }}
+    <span class="card-life__date">{{ .Date.Format "2006.01.02" }}</span>
+    <span class="card-life__title">{{ .Title }}</span>
+  </a>
+</li>

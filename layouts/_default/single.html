@@ -1,16 +1,12 @@
-{{ define "head" }}{{ partial "post-css.html" . }}{{ end }}
-
 {{ define "main" }}
-  <article class="post" aria-labelledby="post-h">
-    <div class="wrap">
-      <div class="measure">
-        <p class="t-label">{{ with .Parent }}<a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a>{{ end }} · <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></p>
-        <h1 id="post-h">{{ .Title }}</h1>
-        <div class="post__body">{{ .Content }}</div>
-        {{- with .Parent }}
-        <p class="post__other"><a class="link" href="{{ .RelPermalink }}">{{ .Title }} の一覧へ戻る</a></p>
-        {{- end }}
-      </div>
+  <article class="post wrap">
+    <div class="measure">
+      <p class="t-label">{{ with .Parent }}<a class="link" href="{{ .RelPermalink }}">{{ .Title }}</a> · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time></p>
+      <h1>{{ .Title }}</h1>
+      {{- if eq .Section "life" }}
+      {{- with .Resources.GetMatch (.Params.cover | default "cover.*") }}<img class="post__cover" src="{{ (.Resize "1200x webp q80").RelPermalink }}" alt="">{{ else }}{{ with .Params.cover }}<img class="post__cover" src="{{ . }}" alt="">{{ end }}{{ end }}
+      {{- end }}
+      <div class="post__body">{{ .Content }}</div>
     </div>
   </article>
 {{ end }}

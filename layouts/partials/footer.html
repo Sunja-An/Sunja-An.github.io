@@ -1,34 +1,6 @@
-<footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
+<footer class="site-foot">
   <div class="wrap">
-    <div class="closing__cta close--word">
-      <div class="section-head--split">
-        <div><h2 id="close-h">書いたコードはGitHubに</h2><p class="t-lead">ブログで触れたコードは、GitHubのリポジトリで見られます。</p></div>
-        <a class="btn btn--primary" href="https://github.com/Sunja-An">GitHubを見る<svg class="m-arrow" viewBox="0 0 12 12" aria-hidden="true"><path class="m-arrow__stem" d="M1 6h8"/><path class="m-arrow__head" d="M4.5 2.5 8 6l-3.5 3.5"/></svg></a>
-      </div>
-      <p class="close__word" aria-hidden="true">楽しく生きて行こうや</p>
-    </div>
-    <div class="closing__links">
-      <div class="grid">
-        <div class="span-4 stack-4">
-          <a class="nav__logo" href="{{ if .IsHome }}#top{{ else }}/{{ end }}"><span class="mark" data-mark="ring" aria-hidden="true"></span>楽しく生きて行こうや</a>
-          <p class="footer__lede">アンソヌの開発ブログと日常の記録。</p>
-        </div>
-        <div class="span-2 start-9 footer__col"><h3>記事</h3><ul><li><a href="/tech/">技術 Post</a></li><li><a href="/life/">日常 Post</a></li></ul></div>
-        <div class="span-2 footer__col"><h3>ブログ</h3><ul><li><a href="{{ if not .IsHome }}/{{ end }}#about">このブログについて</a></li><li><a href="{{ if not .IsHome }}/{{ end }}#stack">使う技術</a></li></ul></div>
-      </div>
-      <div class="footer__legal">
-        <span>&copy; {{ now.Year }} 楽しく生きて行こうや</span>
-        <div class="socials"><a href="https://github.com/Sunja-An" aria-label="GitHub"><svg class="ic ic-svg ic-24" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.910 1.23 3.220 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a></div>
-        <span>製品名とロゴは各社の商標です</span>
-      </div>
-    </div>
+    <span>&copy; {{ now.Year }} アンソヌ</span>
+    <a class="link" href="https://github.com/Sunja-An">GitHub</a>
   </div>
 </footer>
-
-<nav class="actionbar" aria-label="クイック操作">
-  <a class="btn btn--primary" href="https://github.com/Sunja-An">GitHubを見る</a>
-</nav>
-
-<script type="module" src="/assets/system.js"></script>
-<script type="module" src="/assets/motion/motion.js"></script>
-<script type="module" src="/assets/layout/layout.js"></script>

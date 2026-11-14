@@ -1,0 +1,23 @@
+{{ define "main" }}
+  <section class="intro intro--sub wrap">
+    <p class="t-label">{{ .Params.who }}</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p class="intro__lead">{{ . }}</p>{{ end }}
+  </section>
+  {{- with .Pages }}
+  <section class="block wrap" aria-labelledby="h-recent">
+    <div class="block__head"><h2 id="h-recent">最近の記録</h2></div>
+    {{ partial "strip.html" (first 12 .) }}
+  </section>
+  <section class="block wrap" aria-labelledby="h-all">
+    <div class="block__head"><h2 id="h-all">すべての記録</h2></div>
+    <ol class="rows-plain">
+      {{- range . }}
+      <li class="row"><time class="row__date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><div class="row__main"><a class="row__title" href="{{ .RelPermalink }}">{{ .Title }}</a></div></li>
+      {{- end }}
+    </ol>
+  </section>
+  {{- else }}
+  <section class="block wrap"><p class="muted">まだ記録はありません。</p></section>
+  {{- end }}
+{{ end }}
