@@ -85,6 +85,11 @@ Unpublishing: delete `content/<section>/<slug>/` (or one `index.<lang>.md`) only
   `content/about.ja.md` and `about.ko.md`. Values in `data/about.yaml` that differ by language are
   `{ ja: "...", ko: "..." }` maps, read through `partial "loc.html"`.
 - A post that exists in one language only shows only in that language's lists.
+- **When the user changes Japanese text on a page** (i18n strings, section `_index.md`, About,
+  `data/about.yaml`), always ask what the Korean version should say before finishing. Do not
+  translate it yourself; the Korean side may say something different on purpose. Until the user
+  answers, leave the Korean text as it is and say so. (Blog posts are excluded: their translations
+  come from separate Korean notes.)
 
 ## Git
 
