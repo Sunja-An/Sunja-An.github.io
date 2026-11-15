@@ -1,12 +1,24 @@
 baseURL = "https://sunja-an.github.io/"
-languageCode = "ja"
-defaultContentLanguage = "ja"
 title = "楽しく生きて行こうや"
+# Japanese at /, Korean at /ko/; a post's translations share one bundle (index.ja.md, index.ko.md)
+defaultContentLanguage = "ja"
+defaultContentLanguageInSubdir = false
 # posts are split by section (content/tech, content/life), so no tag or category pages
 disableKinds = ["taxonomy", "term"]
 
-[params]
-  description = "開発者アンソヌが、技術の記録と毎日のことを書くブログ。"
+[languages.ja]
+  weight = 1
+  languageCode = "ja"
+  languageName = "日本語"
+  [languages.ja.params]
+    description = "開発者アンソヌが、技術の記録と毎日のことを書くブログ。"
+
+[languages.ko]
+  weight = 2
+  languageCode = "ko"
+  languageName = "한국어"
+  [languages.ko.params]
+    description = "개발자 안선우가 기술 기록과 일상을 적는 블로그."
 
 [markup.goldmark.renderer]
   unsafe = false

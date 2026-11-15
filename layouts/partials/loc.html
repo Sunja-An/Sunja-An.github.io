@@ -1,0 +1,4 @@
+{{- /* a data value in the page's language: a { ja, ko } map or a plain string */ -}}
+{{- $v := . }}
+{{- if reflect.IsMap . }}{{ $v = index . site.Language.Lang | default (index . "ja") }}{{ end }}
+{{- return $v }}

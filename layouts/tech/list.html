@@ -9,7 +9,7 @@
     <h2 class="year">{{ .Key }}</h2>
     <ol class="rows-plain">{{ range .Pages }}{{ partial "tech-row.html" . }}{{ end }}</ol>
     {{- else }}
-    <p class="muted">まだ記事はありません。</p>
+    <p class="muted">{{ i18n "noPosts" }}</p>
     {{- end }}
   </section>
 {{ end }}

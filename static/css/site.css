@@ -89,3 +89,12 @@ a.row__title:hover { color: var(--action); }
 /* footer: one line */
 .site-foot { padding-block: var(--s-7); border-top: 1px solid var(--line); }
 .site-foot .wrap { display: flex; justify-content: space-between; align-items: center; gap: var(--s-5); font-size: var(--t-small); color: var(--muted); }
+
+/* Korean pages: Pretendard first, so Latin and Hangul share one face */
+:root:lang(ko) { --font-display: "Pretendard Variable", "LINE Seed JP", system-ui, sans-serif; --font-text: "Pretendard Variable", "LINE Seed JP", system-ui, sans-serif; }
+
+/* the language switch in the header */
+.lang { display: flex; align-items: center; gap: var(--s-1); margin-left: auto; }
+.lang__link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--s-2); font-size: var(--t-small); color: var(--muted); text-decoration: none; }
+.lang__link:hover { color: var(--ink); }
+.lang__link[aria-current="true"] { color: var(--ink); font-weight: 700; }

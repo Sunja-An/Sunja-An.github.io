@@ -3,21 +3,21 @@
   <section class="intro intro--sub intro--about wrap">
     {{- with resources.Get "images/me.jpg" }}
     {{- $img := .Fill "900x1200 Center webp q82" }}
-    <figure class="about-photo"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="アンソヌの写真"></figure>
+    <figure class="about-photo"><img src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ i18n "photoAlt" }}"></figure>
     {{- end }}
     <div class="intro__text">
     <p class="t-label">About</p>
-    <h1>どうも、ソヌです</h1>
+    <h1>{{ i18n "aboutTitle" }}</h1>
     {{ with .Content }}<div class="intro__lead">{{ . }}</div>{{ end }}
     {{- with $d.profile }}
     <dl class="profile">
-      {{- range . }}<div><dt>{{ .label }}</dt><dd>{{ .value }}</dd></div>{{ end }}
+      {{- range . }}<div><dt>{{ partial "loc.html" .label }}</dt><dd>{{ partial "loc.html" .value }}</dd></div>{{ end }}
     </dl>
     {{- end }}
     </div>
   </section>
 
-  {{- range slice (dict "key" "career" "title" "経歴") (dict "key" "education" "title" "学歴") }}
+  {{- range slice (dict "key" "career" "title" (i18n "career")) (dict "key" "education" "title" (i18n "education")) }}
   {{- $title := .title }}
   {{- with index $d .key }}
   <section class="block wrap">
@@ -25,11 +25,11 @@
     <ol class="rows-plain">
       {{- range . }}
       <li class="row">
-        <span class="row__date">{{ .period }}</span>
+        <span class="row__date">{{ partial "loc.html" .period }}</span>
         <div class="row__main">
-          <span class="row__title">{{ .org }}</span>
-          {{ with .role }}<p class="row__desc">{{ . }}</p>{{ end }}
-          {{ with .note }}<p class="row__desc">{{ . }}</p>{{ end }}
+          <span class="row__title">{{ partial "loc.html" .org }}</span>
+          {{ with .role }}<p class="row__desc">{{ partial "loc.html" . }}</p>{{ end }}
+          {{ with .note }}<p class="row__desc">{{ partial "loc.html" . }}</p>{{ end }}
         </div>
       </li>
       {{- end }}
@@ -40,7 +40,7 @@
 
   {{- with $d.stack }}
   <section class="block wrap">
-    <div class="block__head"><h2>使う技術</h2></div>
+    <div class="block__head"><h2>{{ i18n "tools" }}</h2></div>
     <ul class="ic-chip-row stack">
       {{- range . }}
       <li class="ic-chip ic-chip--lg"><img class="ic{{ with .class }} {{ . }}{{ end }}" src="/assets/icons/{{ .icon }}.svg" alt="" width="22" height="22">{{ .name }}</li>

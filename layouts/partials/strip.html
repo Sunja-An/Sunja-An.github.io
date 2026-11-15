@@ -1,11 +1,11 @@
 {{- /* a row of cards the visitor scrolls sideways; buttons step by one screen of cards, nothing moves by itself */ -}}
 <div class="strip" data-strip>
-  <ul class="strip__track" tabindex="0" aria-label="日常の記録">
+  <ul class="strip__track" tabindex="0" aria-label="{{ i18n "lifeRecords" }}">
     {{- range . }}{{ partial "life-card.html" . }}{{ end }}
   </ul>
   <div class="strip__ctrl">
-    <button type="button" data-strip-prev aria-label="前へ"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button>
-    <button type="button" data-strip-next aria-label="次へ"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button>
+    <button type="button" data-strip-prev aria-label="{{ i18n "prev" }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3.5 5.5 8l4.5 4.5"/></svg></button>
+    <button type="button" data-strip-next aria-label="{{ i18n "next" }}"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3.5 10.5 8 6 12.5"/></svg></button>
   </div>
 </div>
 <script src="/js/strip.js" defer></script>

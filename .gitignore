@@ -4,3 +4,4 @@ resources/_gen/
 shots/
 .taste-skill/chrome-*/
 pre-content/
+.DS_Store
